@@ -1,0 +1,30 @@
+<view class="shell">
+  <view class="page-heading">教程库</view>
+  <view class="page-intro">按主题找教程，跟着步骤做一个小作品。</view>
+  <view class="search-box">
+    <view class="search-icon"></view>
+    <input
+      class="search-input" type="text" value="{{query}}"
+      placeholder="搜索教程关键词" placeholder-class="search-placeholder"
+      focus="{{focusSearch}}" confirm-type="search" maxlength="80"
+      bindinput="updateQuery" bindblur="onSearchBlur"
+    />
+    <button wx:if="{{query}}" class="clear-search" bindtap="clearQuery" aria-label="清空搜索" hover-class="tap">×</button>
+  </view>
+
+  <view class="filters" aria-label="教程分类">
+    <button
+      wx:for="{{categories}}" wx:key="id" class="filter {{category === item.id ? 'active' : ''}}"
+      data-category="{{item.id}}" bindtap="selectCategory" hover-class="tap"
+      aria-pressed="{{category === item.id}}"
+    >{{item.name}}</button>
+  </view>
+
+  <view class="result-count">{{guides.length}} 篇教程</view>
+  <guide-card wx:for="{{guides}}" wx:key="id" guide="{{item}}"></guide-card>
+  <view wx:if="{{!guides.length}}" class="empty-state">
+    <view class="empty-title">没有找到匹配的教程</view>
+    <view class="empty-body">试试工具名称或更短的关键词。</view>
+    <button class="primary-button" bindtap="clearFilters" hover-class="tap">查看全部教程</button>
+  </view>
+</view>

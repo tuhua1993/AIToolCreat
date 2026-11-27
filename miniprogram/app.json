@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/library/index",
+    "pages/saved/index",
+    "pages/detail/index",
+    "pages/about/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "创作星球",
+    "navigationBarBackgroundColor": "#101220",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#101220",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#9D9DB5",
+    "selectedColor": "#CBF891",
+    "backgroundColor": "#151725",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "assets/home.png",
+        "selectedIconPath": "assets/home-active.png"
+      },
+      {
+        "pagePath": "pages/library/index",
+        "text": "教程库",
+        "iconPath": "assets/library.png",
+        "selectedIconPath": "assets/library-active.png"
+      },
+      {
+        "pagePath": "pages/saved/index",
+        "text": "收藏",
+        "iconPath": "assets/saved.png",
+        "selectedIconPath": "assets/saved-active.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "guide-card": "/components/guide-card/index"
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,22 @@
+.detail { padding-top: 26rpx; }
+.detail-meta { display: flex; align-items: center; gap: 16rpx; margin-bottom: 17rpx; color: #b9bbd0; font-size: 24rpx; }
+.detail-topic { padding: 5rpx 14rpx; border-radius: 10rpx; background: #2a382e; color: #cbf891; }
+.detail-title { font-size: 47rpx; line-height: 1.25; }
+.detail-intro { margin-top: 12rpx; font-size: 28rpx; }
+.outcome { padding: 21rpx 24rpx; border: 1rpx solid #3d5347; border-radius: 20rpx; background: #1e2a2b; color: #e0eddc; font-size: 27rpx; }
+.outcome-label { margin-bottom: 5rpx; color: #cbf891; font-size: 23rpx; font-weight: 700; }
+.detail-heading { margin: 32rpx 0 8rpx; }
+.step { display: flex; gap: 16rpx; padding: 20rpx 0; border-bottom: 1rpx solid #2d3046; }
+.step-number { display: flex; flex: 0 0 46rpx; align-items: center; justify-content: center; width: 46rpx; height: 46rpx; border-radius: 13rpx; background: #302849; color: #d5c5ff; font-size: 24rpx; font-weight: 700; }
+.step-copy { min-width: 0; }
+.step-title { font-size: 29rpx; font-weight: 700; }
+.step-body { margin-top: 5rpx; color: #c2c3d6; font-size: 27rpx; line-height: 1.72; }
+.prompt-card { margin-top: 28rpx; padding: 24rpx; border: 1rpx solid #463b62; border-radius: 22rpx; background: #242038; }
+.prompt-header { display: flex; justify-content: space-between; align-items: center; gap: 12rpx; margin-bottom: 10rpx; }
+.prompt-title { font-size: 29rpx; }
+.copy { min-height: 54rpx; padding: 6rpx 19rpx; border: 1rpx solid #5a4e78; border-radius: 12rpx; background: #33294e; color: #e1d7ff; font-size: 24rpx; }
+.prompt-text { color: #ded7ed; font-size: 27rpx; line-height: 1.75; }
+.check { margin: 24rpx 0; color: #c2c3d6; font-size: 27rpx; }
+.detail-actions { display: flex; gap: 14rpx; }
+.detail-actions button { flex: 1; }
+.secondary-button { min-height: 74rpx; padding: 12rpx 22rpx; border: 1rpx solid #41445f; border-radius: 20rpx; background: #1a1c2e; font-size: 26rpx; font-weight: 700; }

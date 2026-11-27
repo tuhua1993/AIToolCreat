@@ -1,0 +1,14 @@
+{
+  "description": "创作星球｜个人 AI 创作教程",
+  "projectname": "AIToolCreat",
+  "appid": "touristappid",
+  "compileType": "miniprogram",
+  "miniprogramRoot": "miniprogram/",
+  "setting": {
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "urlCheck": true
+  }
+}

@@ -1,0 +1,7 @@
+.search-input { flex: 1; min-width: 0; width: 0; height: 62rpx; font-size: 27rpx; }
+.search-placeholder { color: #adafc6; }
+.clear-search { flex: 0 0 58rpx; min-height: 58rpx; color: #adafc6; font-size: 36rpx; }
+.filters { display: flex; flex-wrap: wrap; gap: 12rpx; margin: 22rpx 0 28rpx; }
+.filter { padding: 10rpx 20rpx; border: 1rpx solid #373950; border-radius: 24rpx; background: #1a1c2e; color: #cccce0; font-size: 24rpx; }
+.filter.active { border-color: #cbf891; background: #cbf891; color: #182418; font-weight: 700; }
+.result-count { margin-bottom: 12rpx; color: #adafc6; font-size: 24rpx; }

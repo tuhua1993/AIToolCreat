@@ -1,0 +1,14 @@
+<view class="shell">
+  <view class="page-heading">我的收藏</view>
+  <view class="page-intro">收藏保存在当前设备，方便下次接着做。</view>
+  <guide-card wx:for="{{guides}}" wx:key="id" guide="{{item}}"></guide-card>
+  <view wx:if="{{loadError}}" class="empty-state">
+    <view class="empty-title">暂时无法读取收藏</view>
+    <view class="empty-body">可以切换页面后再试一次。</view>
+  </view>
+  <view wx:elif="{{!guides.length}}" class="empty-state">
+    <view class="empty-title">还没有收藏的教程</view>
+    <view class="empty-body">在任意教程底部点「收藏教程」。</view>
+    <button class="primary-button" bindtap="browse" hover-class="tap">去教程库</button>
+  </view>
+</view>

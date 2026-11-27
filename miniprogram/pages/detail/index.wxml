@@ -1,0 +1,46 @@
+<view class="shell detail" wx:if="{{guide}}">
+  <view class="detail-meta"><text class="detail-topic">{{guide.topic.name}}</text><text>约 {{guide.time}} 分钟</text></view>
+  <view class="page-heading detail-title">{{guide.title}}</view>
+  <view class="page-intro detail-intro">{{guide.summary}}</view>
+
+  <view class="outcome">
+    <view class="outcome-label">这篇会做出什么</view>
+    <view>{{guide.outcome}}</view>
+  </view>
+
+  <view class="section-title detail-heading">实操步骤</view>
+  <view class="step" wx:for="{{guide.steps}}" wx:key="title">
+    <text class="step-number">{{index + 1}}</text>
+    <view class="step-copy">
+      <view class="step-title">{{item.title}}</view>
+      <view class="step-body">{{item.body}}</view>
+    </view>
+  </view>
+
+  <view class="prompt-card">
+    <view class="prompt-header">
+      <view class="section-title prompt-title">提示词模板</view>
+      <button class="copy" bindtap="copyPrompt" hover-class="tap">复制</button>
+    </view>
+    <text class="prompt-text" user-select="{{true}}">{{guide.prompt}}</text>
+  </view>
+
+  <view class="check">
+    <view class="step-title lime">做完检查</view>
+    <view>{{guide.check}}</view>
+  </view>
+
+  <view class="detail-actions">
+    <button class="primary-button bookmark" bindtap="changeBookmark" hover-class="tap" aria-pressed="{{bookmarked}}">
+      {{bookmarked ? '取消收藏' : '收藏教程'}}
+    </button>
+    <button class="secondary-button" open-type="share" hover-class="tap">分享教程</button>
+  </view>
+</view>
+<view class="shell" wx:else>
+  <view class="empty-state">
+    <view class="empty-title">找不到这篇教程</view>
+    <view class="empty-body">可以在教程库里查找相关主题。</view>
+    <button class="primary-button" bindtap="browse" hover-class="tap">打开教程库</button>
+  </view>
+</view>

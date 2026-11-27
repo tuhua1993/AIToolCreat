@@ -1,0 +1,7 @@
+{
+  "desc": "公开教程页面索引",
+  "rules": [
+    { "action": "disallow", "page": "pages/saved/index" },
+    { "action": "allow", "page": "*" }
+  ]
+}

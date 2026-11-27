@@ -1,0 +1,45 @@
+<view class="shell home">
+  <view class="hero">
+    <image class="hero-image" src="/assets/planet-hero.jpg" mode="aspectFill" />
+    <view class="hero-shade"></view>
+    <view class="hero-content">
+      <view class="hero-label"><view class="hero-dot"></view>个人 AI 创作笔记</view>
+      <view class="hero-heading">用 AI，把灵感<text class="hero-accent">做成作品</text></view>
+      <view class="hero-description">从工具上手，到做出第一个作品。</view>
+      <navigator class="primary-button hero-action" url="{{startPath}}" hover-class="tap">
+        从第一篇开始 <text class="hero-arrow">↗</text>
+      </navigator>
+    </view>
+  </view>
+
+  <button class="search-box home-search" bindtap="search" hover-class="tap">
+    <view class="search-icon"></view>
+    <text>搜索 WorkBuddy、Codex 或教程主题</text>
+  </button>
+
+  <view class="section-bar">
+    <view class="section-title">教程分类</view>
+    <button class="section-link" bindtap="browse" hover-class="tap">全部教程 <text>›</text></button>
+  </view>
+  <view class="topic-grid">
+    <button
+      wx:for="{{categories}}" wx:key="id"
+      class="topic-card" data-category="{{item.id}}" bindtap="openTopic" hover-class="tap"
+    >
+      <view class="topic-icon tone-{{item.tone}}">
+        <image src="/assets/{{item.icon}}.png" mode="aspectFit" />
+      </view>
+      <view class="topic-copy">
+        <view class="topic-name">{{item.name}}</view>
+        <view class="topic-subtitle">{{item.subtitle}}</view>
+      </view>
+    </button>
+  </view>
+
+  <view class="section-bar featured-heading">
+    <view class="section-title">入门推荐</view>
+  </view>
+  <guide-card wx:for="{{featured}}" wx:key="id" guide="{{item}}"></guide-card>
+
+  <navigator class="about-link" url="/pages/about/index" hover-class="tap">关于创作星球 <text>›</text></navigator>
+</view>
