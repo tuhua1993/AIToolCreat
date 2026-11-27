@@ -54,7 +54,7 @@ Page({
   onShareAppMessage() {
     const { guide } = this.data
     return guide
-      ? { title: `${guide.title} · 创作星球`, path: detailPath(guide.id) }
-      : { title: '创作星球', path: HOME }
+      ? { title: `${guide.title} · 创作玩家`, path: detailPath(guide.id) }
+      : { title: '创作玩家', path: HOME }
   }
 })

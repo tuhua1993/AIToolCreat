@@ -7,7 +7,7 @@
     "pages/about/index"
   ],
   "window": {
-    "navigationBarTitleText": "创作星球",
+    "navigationBarTitleText": "创作玩家",
     "navigationBarBackgroundColor": "#101220",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#101220",

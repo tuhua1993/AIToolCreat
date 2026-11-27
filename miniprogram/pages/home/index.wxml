@@ -41,5 +41,5 @@
   </view>
   <guide-card wx:for="{{featured}}" wx:key="id" guide="{{item}}"></guide-card>
 
-  <navigator class="about-link" url="/pages/about/index" hover-class="tap">关于创作星球 <text>›</text></navigator>
+  <navigator class="about-link" url="/pages/about/index" hover-class="tap">关于创作玩家 <text>›</text></navigator>
 </view>

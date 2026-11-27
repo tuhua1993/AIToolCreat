@@ -45,6 +45,6 @@ Page({
   },
 
   onShareAppMessage() {
-    return { title: '创作星球｜AI 图文教程库', path: LIBRARY }
+    return { title: '创作玩家｜AI 图文教程库', path: LIBRARY }
   }
 })
