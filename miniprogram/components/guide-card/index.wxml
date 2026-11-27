@@ -1,6 +1,10 @@
-<navigator wx:if="{{guide && url}}" class="card {{illustrated ? 'illustrated' : ''}} {{featured ? 'featured' : ''}}" url="{{url}}" hover-class="pressed">
-  <view wx:if="{{illustrated}}" class="card-cover cover-{{guide.topic.tone}}">
-    <image wx:if="{{guide.cover}}" class="cover-photo" src="{{guide.cover.src}}" aria-label="{{guide.cover.alt}}" mode="aspectFill" />
+<navigator wx:if="{{guide && url}}" class="card {{illustrated ? 'illustrated' : ''}}" url="{{url}}" hover-class="pressed">
+  <view wx:if="{{illustrated}}" class="card-cover">
+    <view wx:if="{{guide.cover.device === 'laptop'}}" class="laptop">
+      <image class="laptop-screen" src="{{guide.cover.src}}" mode="aspectFill" aria-label="{{guide.cover.alt}}" />
+      <view class="laptop-base"></view>
+    </view>
+    <image wx:elif="{{guide.cover}}" class="cover-photo" src="{{guide.cover.src}}" aria-label="{{guide.cover.alt}}" mode="aspectFill" />
     <image wx:else class="cover-icon" src="/assets/{{guide.topic.icon}}.png" mode="aspectFit" />
   </view>
   <view class="card-main">
@@ -11,7 +15,6 @@
     </view>
     <view class="card-title">{{guide.title}}</view>
     <view class="card-summary">{{illustrated && guide.caseNote ? guide.caseNote : guide.summary}}</view>
-    <view wx:if="{{illustrated && showDate && guide.updatedOn}}" class="case-date">{{guide.updatedOn}} 更新</view>
   </view>
-  <text class="card-arrow">›</text>
+  <text wx:if="{{!illustrated}}" class="card-arrow">›</text>
 </navigator>

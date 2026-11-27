@@ -21,30 +21,14 @@
 .card-arrow { flex: 0 0 auto; color: #485ab8; font-size: 36rpx; line-height: 1; }
 .pressed { opacity: .72; }
 
-.card.illustrated {
-  gap: 19rpx;
-  margin: 0;
-  padding: 18rpx 0;
-  border: 0;
-  border-bottom: 1rpx solid #dfded7;
-  border-radius: 0;
-  background: transparent;
-}
 
+.card.illustrated { gap: 9px; min-height: 101px; margin: 0; padding: 15px 0; border: 0; border-bottom: 1px solid #e9e9e9; border-radius: 0; background: #fff; }
 .illustrated .card-main { flex: 1; }
-.illustrated .card-title { margin: 0 0 5rpx; font-size: 30rpx; line-height: 1.32; }
-.illustrated .card-summary { font-size: 24rpx; line-height: 1.36; }
-.illustrated .card-arrow { align-self: center; color: #383c50; }
-.case-date { margin-top: 6rpx; color: #616371; font-size: 21rpx; }
-.card-cover { display: flex; flex: 0 0 152rpx; align-items: center; justify-content: center; overflow: hidden; width: 152rpx; height: 118rpx; border-radius: 16rpx; }
+.illustrated .card-title { margin: 0 0 4px; color: #1a1b1e; font-size: 16px; line-height: 1.4; font-weight: 700; }
+.illustrated .card-summary { color: #66676b; font-size: 13px; line-height: 1.5; }
+.card-cover { display: flex; flex: 0 0 87px; align-items: center; justify-content: center; overflow: hidden; width: 87px; height: 66px; border-radius: 13px; background: #f0f0f2; }
 .cover-photo { display: block; width: 100%; height: 100%; }
-.cover-icon { width: 56rpx; height: 56rpx; }
-.cover-blue { background: #e8edff; }
-.cover-lilac { background: #efe9fb; }
-.cover-peach { background: #faebe2; }
-.cover-teal { background: #e1f1ec; }
-.card.illustrated.featured { position: relative; display: block; overflow: hidden; margin: 14rpx 0 5rpx; padding: 0; border: 1rpx solid #e6e5e1; border-radius: 21rpx; background: #fff; }
-.featured .card-cover { width: 100%; height: 312rpx; border-radius: 0; }
-.featured .card-main { padding: 20rpx 55rpx 23rpx 22rpx; }
-.featured .card-title { font-size: 35rpx; }
-.featured .card-arrow { position: absolute; right: 23rpx; bottom: 47rpx; }
+.cover-icon { width: 32px; height: 32px; }
+.laptop { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(142deg, #fafafa, #e1e4e5 70%, #bbc0c4); }
+.laptop-screen { width: 63px; height: 40px; border: 2px solid #27282a; border-bottom-width: 3px; border-radius: 3px 3px 1px 1px; background: white; }
+.laptop-base { width: 77px; height: 3px; border-radius: 1px 1px 70% 70%; background: linear-gradient(#e8ebeb,#767a7e); box-shadow: 0 2px 3px #888a91; }

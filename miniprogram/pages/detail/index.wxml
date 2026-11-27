@@ -19,9 +19,27 @@
     <button data-section="case-skill" bindtap="jumpToCaseSection" hover-class="tap">Skill</button>
   </view>
 
-  <view class="detail-cover" wx:if="{{guide.cover}}">
-    <image src="{{guide.cover.src}}" mode="aspectFill" aria-label="{{guide.cover.alt}}" />
-    <text>{{guide.cover.credit}}</text>
+  <view wx:if="{{guide.resources.frames}}" class="case-figure">
+    <view class="figure-heading">《山月来信》分镜手记</view>
+    <image class="case-image" src="{{guide.resources.frames[frameIndex].src}}" mode="widthFix"
+      aria-label="{{guide.resources.frames[frameIndex].caption}}" data-src="{{guide.resources.frames[frameIndex].src}}" bindtap="previewFigure" />
+    <view class="frame-controls">
+      <button data-step="-1" disabled="{{frameIndex === 0}}" bindtap="moveFrame" hover-class="tap">上一镜</button>
+      <text>{{frameIndex + 1}} / {{guide.resources.frames.length}}　·　{{guide.resources.frames[frameIndex].time}}</text>
+      <button data-step="1" disabled="{{frameIndex + 1 === guide.resources.frames.length}}" bindtap="moveFrame" hover-class="tap">下一镜</button>
+    </view>
+    <view class="frame-caption">{{guide.resources.frames[frameIndex].caption}}</view>
+    <view class="case-credit">{{guide.cover.credit}}</view>
+  </view>
+  <view wx:elif="{{guide.cover}}" class="case-figure">
+    <image class="case-image" src="{{guide.cover.src}}" mode="widthFix" aria-label="{{guide.cover.alt}}"
+      data-src="{{guide.cover.src}}" bindtap="previewFigure" />
+    <view class="case-credit">{{guide.cover.credit}}</view>
+  </view>
+  <button wx:if="{{channelsVideo}}" class="primary-button watch-case" bindtap="openCaseVideo" hover-class="tap">去视频号看作品</button>
+  <view wx:if="{{guide.resources.lyrics}}" class="lyric-sheet">
+    <view class="figure-heading">《晚风来信》副歌节选</view>
+    <view wx:for="{{guide.resources.lyrics}}" wx:key="*this">{{item}}</view>
   </view>
 
   <view class="outcome">

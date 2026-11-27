@@ -9,14 +9,14 @@
   ],
   "window": {
     "navigationBarTitleText": "创作玩家",
-    "navigationBarBackgroundColor": "#FAF9F5",
+    "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#FAF9F5",
+    "backgroundColor": "#FFFFFF",
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
     "color": "#737589",
-    "selectedColor": "#2844C7",
+    "selectedColor": "#7762DB",
     "backgroundColor": "#FFFFFF",
     "borderStyle": "white",
     "list": [

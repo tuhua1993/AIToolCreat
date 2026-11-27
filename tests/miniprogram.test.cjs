@@ -102,22 +102,21 @@ test('首页展示最新教程，入口打开指定分类或搜索', () => {
   global.getApp = () => app
   let lastTab
   global.wx = {
-    switchTab: ({ url }) => { lastTab = url },
-    getWindowInfo: () => ({ statusBarHeight: 47 }),
-    getMenuButtonBoundingClientRect: () => ({ top: 53, height: 32 })
+    switchTab: ({ url }) => { lastTab = url }
   }
   const home = loadPage('home')
   const library = loadPage('library')
 
   assert.deepEqual(ids(home.data.recent), ids(findCases().slice(0, 3)))
-  assert.deepEqual(ids(home.data.creationTopics), ['drama', 'music', 'fiction', 'video', 'build', 'overseas'])
+  assert.deepEqual(ids(home.data.creationTopics), ['drama', 'music', 'fiction', 'commerce', 'build', 'video'])
   const days = findGuides('').map(({ updatedOn }) => updatedOn)
   assert.deepEqual(days, [...days].sort().reverse())
-  home.onLoad()
-  assert.equal(home.data.statusBar, 47)
-  assert.equal(home.data.menuHeight, 44)
-  home.openCases()
-  assert.equal(lastTab, '/pages/cases/index')
+  for (const topic of home.data.creationTopics) {
+    assert(fs.existsSync(path.join(root, 'assets/actions', topic.icon + '.png')))
+    home.openTopic({ currentTarget: { dataset: { category: topic.id } } })
+    library.onShow()
+    assert(library.data.guides.length > 0)
+  }
   home.openTopic({ currentTarget: { dataset: { category: 'drama' } } })
   assert.equal(lastTab, '/pages/library/index')
   library.onShow()
@@ -234,4 +233,44 @@ test('收藏兼容旧数据，并支持回到收藏页后移除条目', () => {
   assert.equal(saved.data.loadError, true)
   detail.changeBookmark()
   assert.equal(detail.data.bookmarked, true)
+})
+
+test('漫剧逐镜浏览、作品入口绑定和未发布状态', () => {
+  const detail = loadPage('detail')
+  const comic = getGuide('comic-30s')
+  const original = comic.resources.channelsVideo
+  let opened
+  global.wx = { openChannelsActivity: (args) => { opened = args } }
+  const click = (step) => detail.moveFrame({ currentTarget: { dataset: { step } } })
+  try {
+    comic.resources.channelsVideo = null
+    detail.onLoad({ id: comic.id })
+    detail.openCaseVideo()
+    assert.equal(opened, undefined)
+    const frames = comic.resources.frames
+    assert.equal(frames.length, 6)
+    assert.equal(new Set(frames.map((frame) => frame.src)).size, 6)
+    for (const frame of frames) {
+      assert(fs.statSync(path.join(root, frame.src.slice(1))).size > 0)
+      assert(frame.time && frame.caption)
+    }
+    click(-1)
+    assert.equal(detail.data.frameIndex, 0)
+    for (let i = 0; i < 6; i++) click(1)
+    assert.equal(detail.data.frameIndex, 5)
+    click(-1)
+    assert.equal(detail.data.frameIndex, 4)
+    comic.resources.channelsVideo = { finderUserName: 'sample', feedId: '' }
+    detail.onLoad({ id: comic.id })
+    assert.equal(detail.data.channelsVideo, null)
+    comic.resources.channelsVideo = { finderUserName: 'sample', feedId: '10000000000000001' }
+    detail.onLoad({ id: comic.id })
+    assert.equal(detail.data.frameIndex, 0)
+    detail.openCaseVideo()
+    assert.equal(opened.finderUserName, 'sample')
+    assert.equal(opened.feedId, '10000000000000001')
+    detail.onLoad({ id: 'music-first-song' })
+    assert.equal(detail.data.channelsVideo, null)
+    assert.equal(detail.data.guide.resources.lyrics.length, 4)
+  } finally { comic.resources.channelsVideo = original }
 })

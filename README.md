@@ -32,6 +32,7 @@
 | 短剧出海 | `drama-en` |
 | AI 音乐 | `music-bed` |
 | 原创情歌案例 | `music-first-song` |
+| 电商商品图文 | `commerce-product-copy` |
 | AI 小说 | `fiction-chapter` |
 | AI 建站 | `build-site` |
 | AI 做软件 | `build-software` |
@@ -47,24 +48,21 @@
 
 [The Odin Project](https://github.com/TheOdinProject/curriculum) 把内容组织成可完成的项目。[AI Guide](https://github.com/liyupi/ai-guide) 将工具用法和实战内容组织成不同入口。[AI Video Prompt Hub](https://github.com/fatedawn/ai-video-prompt-hub) 以示例串起分镜、工具和提示词。创作玩家采用了这些内容组织方式。
 
-## 项目插画
+## 案例图片与样片
 
-[工作台主视觉](miniprogram/assets/studio-cover.jpg) 由内置 ImageGen 生成并压缩为 JPEG。
+[《山月来信》30 秒 MP4](examples/mountain-letter.mp4) 以六幅真人质感的国风分镜剪成，可在本地播放或发到自己的视频号。小程序内可翻阅全部六镜，发布后按[案例绑定说明](docs/operations.md#给案例绑定已发布的作品)补上视频号作品 ID。图像中的角色为虚构人物。
 
-> Use case: stylized-concept. A wide 3:2 single image for a mobile editorial hero cover of a Chinese independent creative workshop/tutorial journal. Clean warm ivory paper background, near-white soft daylight product photography with tactile real paper and gorgeous shadows. Confine every object to the right 43% of the image, vertically centered, leaving the entire left 54% nearly blank uninterrupted light warm ivory for a heading. On the right, an art-directed asymmetric stack: a deep electric-cobalt blue paper notebook or portfolio with blank cover angled in perspective, a chunky little butter-yellow sculptural asterisk clipped on one corner, a brushed silver mechanical pencil, a small cream contact print of blue abstract ink marks, sculptural bold blue circular paper cutout tucked behind. The blue book is bold and large enough to read on a phone, everything centered horizontally around x 76%. A modern Japanese design magazine style, understated high-end studio image, natural imperfections, daylight from upper left, palette cobalt blue #2646D3, yellow #F6D85D, ivory #F9F6ED, minimal charcoal. Avoid gradients, sci-fi, computer screens, outer space, glowing effects, human models, any text or letters, logos, brand markings or watermark. Keep the main object away from horizontal edges, full-bleed background, art only.
+[漫剧首镜](miniprogram/assets/mountain-01.jpg)和[《晚风来信》封面](miniprogram/assets/evening-letter.jpg)使用内置 ImageGen 生成。建站封面是[作品集的实际浏览器截图](miniprogram/assets/project-portfolio-preview.jpg)。
 
-本次首页主视觉、漫剧画面示例和歌曲情境封面使用内置 ImageGen 生成。作品集案例采用本地页面截图。
+<details>
+<summary>查看创作提示词</summary>
 
-[首页主视觉](miniprogram/assets/creator-stage.jpg)
+**《山月来信》六镜分镜**
 
-> Use case: stylized-concept. Premium art-directed mobile hero for an independent creator's AI tutorial publication. Produce a square 1:1 crop-safe studio photograph with a deep, saturated indigo cobalt seamless background, nearly monochrome #2639B9. The entire left 48% is uninterrupted flat cobalt-blue dark enough for white heading and CTA, no props, faint studio falloff only. In the right half, build a tactile high-fashion still-life: a single large luminous acid-lime yellow-green six-spoke asterisk made from thick folded paper, sculptural and irregular with crisp small shadows, hovering diagonally above a thin stack of cream gridded storyboard index cards and a chrome bulldog clip. A cobalt glass semicircle low behind it. Physically photographed, tactile matte card, dramatic hard-soft directional studio light from the upper right, crisp editorial product photography, cropped close with deliberate scale, sophisticated independent design magazine styling. Main object center x=76% y=46%, leave all objects within right half. Palette cobalt and saturated citrine #EAF981, small neutral cream and silver. No words, letters, numbers, logos, screens, robots, sci-fi, gradient bands, stars, planet or watermark.
+> Six LIVE ACTION film photographs in ONE 2-column by 3-row contact sheet. Equal panels, edge to edge, no gutters or text. Each frame landscape 4:3. Chinese period short film shot on a real camera in the Huangshan mountains at warm lavender sunrise. Same real-looking adult Chinese woman, 28, black hair in a plum ribbon, ivory silk hanfu. Natural human face, skin texture, realistic hands, beautiful film lighting, no illustration, anime or CGI. Top left is a hero medium portrait: face in sharp focus, smiling softly on stone steps under an old pine with distant misty peaks. Top right she notices a pale lilac letter caught on a pine twig. Middle left close-up her hand taking the folded note. Middle right over her shoulder unfolded note shows tiny ink drawing of mountain and moon. Bottom left her profile holding note up to the matching mountain notch and moon on the horizon. Bottom right she kneels to leave note under a stone for the next traveler. Distinct camera angles, coherent real actress, cinematic warm daylight, no titles, no lettering.
 
-[漫剧第 5 镜画面示例](miniprogram/assets/project-comic-still.jpg)
+**《晚风来信》专辑封面**
 
-> Create an original photorealistic cinematic film still, landscape 3:2 with a strong square center crop. It is the pivotal reveal in a 30-second short film titled The Paper Boats Under the Umbrella, no text in the image. Blue-hour after rain at a quiet modern Asian commuter train platform, wet slate tile with clear reflections, a single saturated yellow umbrella tipped gently upward by the partially visible hand of an adult wearing a dark navy raincoat. Under it, four dry ivory folded paper boats neatly lined up at the edge of a shallow puddle. Frame from very low close to the ground, crop people to only sleeve and hands, large clear shapes and photographic texture, muted blue-teal background, warm soft platform lights, gentle hopeful mood. The paper boats and yellow umbrella should be unmistakable at a tiny mobile thumbnail. Photoreal, analog 35mm subtle grain, fine weather detail, no readable signage, numbers, brands, typography, watermarks, rail danger or violence.
+> A romantic, breezy, luminous photographic album sleeve for an original love song titled 晚风来信. Landscape 4:3, edge to edge. Late afternoon in late spring at a SUNNY open-air neighborhood train platform, abundant warm peach-apricot sun and pale turquoise midtones, airy cream blouse, light sage linen, pale blue distant sky, sunlit green trees softly out of focus. Center-right: candid side view of an adult Chinese woman in her late twenties with a short natural bob, smiling visibly with eyes crinkled as she opens a cream handwritten letter, a loose strand of hair lifted by a soft breeze. If the paper has marks they are out of focus. Bright authentic skin tone, transparent golden backlight, fine analog grain, a sweet, hopeful and intimate Mandopop sleeve like a summer film photograph. Large clearly readable elegant dark teal handlettered 4 Chinese characters “晚风来信” arranged vertically on the left against a mostly clean pale warm sunlit field. ALL other text, logos or badges absent. No shadowy silhouette, no dark coat, no rain, no night setting, no noir, no urban alley, no neon, no gloom, no horror cues, no dramatic dark corners. Inviting sun-washed magazine photography with plenty of air and strong thumbnail readability.
 
-[原创歌曲情境封面](miniprogram/assets/project-song-cover.jpg)
-
-> Create an original cinematic photographic album cover image with no text, landscape 3:2 with strong square-center framing, for a gentle Chinese indie folk song about someone arriving home on the last train. Blue hour outside a small city train station, a single adult in a dark plum coat seen from behind, carrying a canvas bag, standing beneath one pool of warm amber light. The wet pavement reflects golden windows and cobalt light. A warm paper letter held loosely in one hand, understated human emotion. Balanced sharply recognizable dark silhouette in the middle and rich nighttime city context, editorial independent record cover photography, subtle blue/magenta undertone and golden accents, believable natural optics and film grain. No letters, names, logo, signage, poster typography, frames, watermark, or reference to any real artist. No cyberpunk signage, no illustration.
-
-[作品集浏览器截图](miniprogram/assets/project-portfolio-preview.jpg)
+</details>

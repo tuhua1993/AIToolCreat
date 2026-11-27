@@ -1,41 +1,16 @@
-.masthead { background: #faf9f5; }
-.masthead-row { display: flex; align-items: center; gap: 14rpx; padding: 0 34rpx; }
-.brand-mark { position: relative; flex: 0 0 45rpx; width: 45rpx; height: 45rpx; border-radius: 12rpx; background: #252ccb; }
-.brand-mark view { position: absolute; top: 20rpx; left: 9rpx; width: 27rpx; height: 5rpx; border-radius: 2rpx; background: #eaf981; }
-.brand-mark view:nth-child(2) { transform: rotate(60deg); }
-.brand-mark view:nth-child(3) { transform: rotate(-60deg); }
-.brand-title { color: #1b2033; font-size: 38rpx; font-weight: 770; letter-spacing: -1rpx; }
-.home { padding-top: 16rpx; }
-
-.creator-stage { position: relative; overflow: hidden; min-height: 310rpx; border-radius: 25rpx; background: #191c90; }
-.stage-image, .stage-shade { position: absolute; top: 0; bottom: 0; height: 100%; }
-.stage-image { right: 0; width: 64%; }
-.stage-shade { left: 0; width: 100%; background: linear-gradient(90deg, #1d208d 22%, rgba(29, 32, 141, .82) 43%, rgba(29, 32, 141, 0) 66%); }
-.stage-content { position: relative; padding: 40rpx 29rpx 38rpx; }
-.stage-title { color: #fff; font-size: 55rpx; font-weight: 770; letter-spacing: -2rpx; line-height: 1.14; }
-.stage-title text { display: block; }
-.stage-note { margin-top: 15rpx; color: #e1e3ff; font-size: 24rpx; line-height: 1.4; }
-.stage-credit { position: absolute; right: 13rpx; bottom: 12rpx; padding: 3rpx 9rpx; border-radius: 6rpx; background: #1d208d; color: #f2f2ff; font-size: 18rpx; }
-
-.topic-grid { display: flex; flex-wrap: wrap; gap: 12rpx; margin-top: 18rpx; }
-.topic-card { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 8rpx; width: calc((100% - 24rpx) / 3); min-height: 111rpx; padding: 13rpx 14rpx; border-radius: 17rpx; color: #24283f; font-size: 25rpx; line-height: 1.25; font-weight: 660; text-align: left; }
-.topic-icon { display: block; width: 41rpx; height: 41rpx; }
-.topic-peach { background: #f8e6dc; }
-.topic-lilac { background: #ede7fa; }
-.topic-teal { background: #e2f0e9; }
-.topic-blue { background: #e5ebfd; }
-.topic-card:nth-child(2) { background: #f7e4ed; }
-.topic-card:nth-child(6) { background: #e8eee5; }
-
-.home-section { margin-top: 32rpx; }
-.section-bar { display: flex; min-height: 52rpx; align-items: center; justify-content: space-between; gap: 12rpx; }
-.section-link { display: inline-flex; align-items: center; gap: 8rpx; min-height: 54rpx; padding-left: 10rpx; color: #303bb0; font-size: 24rpx; font-weight: 650; }
-.section-link text { font-size: 35rpx; line-height: 1; }
-.section-link .search-icon { flex-basis: 22rpx; width: 22rpx; height: 22rpx; border-color: #303bb0; }
-.section-link .search-icon::after { background: #303bb0; }
-.cover-credit { margin-top: 11rpx; color: #646673; font-size: 21rpx; }
-.tool-link { display: flex; align-items: center; gap: 14rpx; width: 100%; margin-top: 10rpx; padding: 17rpx 19rpx; border-radius: 15rpx; background: #fff; color: #24283f; font-size: 26rpx; text-align: left; }
-.tool-link image { width: 36rpx; height: 36rpx; }
-.tool-arrow { margin-left: auto; color: #515770; font-size: 32rpx; line-height: 1; }
-.about-link { display: flex; align-items: center; justify-content: center; gap: 10rpx; min-height: 68rpx; margin-top: 22rpx; color: #565b6d; font-size: 25rpx; }
-.about-link text { font-size: 34rpx; line-height: 1; }
+.shell.home { max-width: 644px; margin: 0 auto; padding: 6px 11px 25px; }
+.creator-stage { padding: 14px; border-radius: 14px; background: linear-gradient(180deg, #626575 0%, #303447 9%, #191e34 25%); }
+.stage-title { color: #fff; font-size: 25px; line-height: 1.35; font-weight: 700; }
+.stage-note { margin-top: 7px; color: #b4bed8; font-size: 13px; line-height: 1.55; }
+.topic-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; margin-top: 10px; }
+.topic-card { display: flex; width: 100%; min-height: 66px; flex-direction: column; justify-content: center; align-items: center; gap: 7px; padding: 8px 3px; border-radius: 10px; background: #f6f6f6; color: #202124; font-size: 14px; line-height: 1.4; }
+.topic-icon { display: block; width: 21px; height: 21px; }
+.home-section { margin-top: 11px; }
+.home .section-title { color: #1c1d20; font-size: 16px; line-height: 1.5; font-weight: 700; }
+.tool-section { margin-top: 20px; }
+.section-bar, .tool-link { display: flex; align-items: center; justify-content: space-between; }
+.section-link, .about-link { color: #6956bd; font-size: 14px; }
+.section-link { min-height: 44px; }
+.tool-link { width: 100%; padding: 12px 0; border-bottom: 1px solid #eee; color: #303039; text-align: left; font-size: 15px; }
+.tool-link text { color: #777382; }
+.about-link { padding: 18px 0 8px; text-align: center; }

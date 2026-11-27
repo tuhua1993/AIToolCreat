@@ -5,11 +5,12 @@ const categories = [
   { id: 'tools', name: 'AI 工具', icon: 'spark', tone: 'blue' },
   { id: 'code', name: 'AI 编程', icon: 'code', tone: 'lilac' },
   { id: 'drama', name: 'AI 短剧', action: '做短剧', icon: 'drama', tone: 'peach' },
-  { id: 'video', name: 'AI 短视频', action: '做短视频', icon: 'play', tone: 'teal' },
+  { id: 'video', name: 'AI 短视频', action: '做自媒体', icon: 'play', tone: 'teal' },
   { id: 'overseas', name: '短剧出海', action: '做出海字幕', icon: 'globe', tone: 'teal' },
   { id: 'music', name: 'AI 音乐', action: '做音乐', icon: 'music', tone: 'peach' },
   { id: 'fiction', name: 'AI 小说', action: '写小说', icon: 'book', tone: 'lilac' },
-  { id: 'build', name: '网站·软件·App', action: '搭网站 / App', icon: 'build', tone: 'blue' }
+  { id: 'commerce', name: '电商内容', action: '做电商', icon: 'bag', tone: 'lilac' },
+  { id: 'build', name: '网站·软件·App', action: '做网站', icon: 'build', tone: 'blue' }
 ]
 
 const categoryMap = new Map(categories.map((item) => [item.id, item]))
@@ -51,4 +52,9 @@ function findCases() {
   return catalog.filter((guide) => guide.resources).map(getCard)
 }
 
-module.exports = { categories, getGuide, getCard, findGuides, findCases }
+function coverNoteFor(cards) {
+  const labels = cards.filter((card) => card.cover && card.cover.generatedLabel).map((card) => card.cover.generatedLabel)
+  return labels.length ? labels.join('、') + '由 AI 生成。' : ''
+}
+
+module.exports = { categories, getGuide, getCard, findGuides, findCases, coverNoteFor }

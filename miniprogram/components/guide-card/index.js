@@ -10,8 +10,7 @@ Component({
       }
     },
     showDate: { type: Boolean, value: false },
-    illustrated: { type: Boolean, value: false },
-    featured: { type: Boolean, value: false }
+    illustrated: { type: Boolean, value: false }
   },
   data: { url: '' }
 })

@@ -8,12 +8,18 @@ Page({
     bookmarked: false,
     hiddenFigures: {},
     enlargedFigure: '',
-    showSkill: false
+    showSkill: false,
+    frameIndex: 0,
+    channelsVideo: null
   },
 
   onLoad(options) {
     const guide = getGuide(guideIdFromOptions(options))
-    this.setData({ guide, hiddenFigures: {}, enlargedFigure: '', showSkill: false })
+    const video = guide?.resources?.channelsVideo
+    const finderUserName = typeof video?.finderUserName === 'string' ? video.finderUserName.trim() : ''
+    const feedId = typeof video?.feedId === 'string' ? video.feedId.trim() : ''
+    const channelsVideo = finderUserName && feedId ? { finderUserName, feedId } : null
+    this.setData({ guide, hiddenFigures: {}, enlargedFigure: '', showSkill: false, frameIndex: 0, channelsVideo })
   },
 
   onShow() {
@@ -65,6 +71,29 @@ Page({
       fail: () => {
         this.setData({ showSkill: true })
         wx.showToast({ title: '可长按 Skill 文本复制', icon: 'none' })
+      }
+    })
+  },
+
+  moveFrame(event) {
+    const frames = this.data.guide?.resources?.frames
+    if (!frames) return
+    const index = this.data.frameIndex + Number(event.currentTarget.dataset.step)
+    if (Number.isInteger(index) && index >= 0 && index < frames.length) this.setData({ frameIndex: index })
+  },
+
+  openCaseVideo() {
+    const video = this.data.channelsVideo
+    if (!video) return
+    if (!wx.openChannelsActivity) {
+      wx.showToast({ title: '请升级微信后观看', icon: 'none' })
+      return
+    }
+    wx.openChannelsActivity({
+      finderUserName: video.finderUserName,
+      feedId: video.feedId,
+      fail(error) {
+        if (!/cancel/i.test(error.errMsg || '')) wx.showToast({ title: '暂时无法打开视频号作品', icon: 'none' })
       }
     })
   },

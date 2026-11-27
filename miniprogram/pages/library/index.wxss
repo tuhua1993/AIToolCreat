@@ -3,5 +3,5 @@
 .clear-search { flex: 0 0 60rpx; min-height: 58rpx; color: #5e6275; font-size: 37rpx; }
 .filters { display: flex; flex-wrap: wrap; gap: 12rpx; margin: 24rpx 0 28rpx; }
 .filter { padding: 10rpx 20rpx; border: 1rpx solid #e1e3ee; border-radius: 30rpx; background: #fff; color: #3c445f; font-size: 25rpx; }
-.filter.active { border-color: #2844c7; background: #2844c7; color: #fff; font-weight: 650; }
+.filter.active { border-color: #6b56c3; background: #6b56c3; color: #fff; font-weight: 650; }
 .result-count { margin-bottom: 14rpx; color: #565b6d; font-size: 25rpx; }

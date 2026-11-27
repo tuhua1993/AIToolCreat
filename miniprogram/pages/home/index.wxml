@@ -1,56 +1,30 @@
-<view class="masthead" style="padding-top: {{statusBar}}px;">
-  <view class="masthead-row" style="height: {{menuHeight}}px;">
-    <view class="brand-mark" aria-hidden="true"><view></view><view></view><view></view></view>
-    <text class="brand-title">创作玩家</text>
-  </view>
-</view>
-
 <view class="shell home">
   <view class="creator-stage">
-    <image class="stage-image" src="/assets/creator-stage.jpg" mode="aspectFill" />
-    <view class="stage-shade"></view>
-    <view class="stage-content">
-      <view class="stage-title">今天想用 AI<text>做点什么？</text></view>
-      <view class="stage-note">工具清单 · 制作预算 · 实操流程</view>
-    </view>
-    <text class="stage-credit">AI 生成插画</text>
+    <view class="stage-title">今天你想用AI做什么？</view>
+    <view class="stage-note">真实案例 · 工具实测 · 低成本创作</view>
   </view>
 
   <view class="topic-grid">
-    <button
-      wx:for="{{creationTopics}}" wx:key="id"
-      class="topic-card topic-{{item.tone}}" data-category="{{item.id}}" bindtap="openTopic" hover-class="tap"
-    >
-      <image class="topic-icon" src="/assets/{{item.icon}}.png" mode="aspectFit" />
+    <button wx:for="{{creationTopics}}" wx:key="id" class="topic-card" data-category="{{item.id}}" bindtap="openTopic" hover-class="tap">
+      <image class="topic-icon" src="/assets/actions/{{item.icon}}.png" mode="aspectFit" />
       <text>{{item.action}}</text>
     </button>
   </view>
 
   <view class="home-section">
-    <view class="section-bar">
-      <view class="section-title">最新实战</view>
-      <button class="section-link" bindtap="openCases" hover-class="tap">全部案例 <text>›</text></button>
-    </view>
+    <view class="section-title">最新实战案例</view>
     <guide-card wx:for="{{recent}}" wx:key="id" guide="{{item}}" illustrated="{{true}}"></guide-card>
-    <view class="cover-credit">漫剧画面与歌曲封面由 AI 生成</view>
+    <view wx:if="{{coverNote}}" class="cover-note">{{coverNote}}</view>
   </view>
 
-  <view class="home-section">
+  <view class="tool-section">
     <view class="section-bar">
       <view class="section-title">工具教程</view>
-      <button class="section-link" bindtap="search" hover-class="tap"><view class="search-icon"></view>搜索</button>
+      <button class="section-link" bindtap="search" hover-class="tap">搜索教程</button>
     </view>
-    <button class="tool-link" data-category="tools" bindtap="openTopic" hover-class="tap">
-      <image src="/assets/spark.png" mode="aspectFit" />
-      <text>WorkBuddy、豆包和 Grok</text>
-      <text class="tool-arrow">›</text>
-    </button>
-    <button class="tool-link" data-category="code" bindtap="openTopic" hover-class="tap">
-      <image src="/assets/code.png" mode="aspectFit" />
-      <text>Codex 编程实战</text>
-      <text class="tool-arrow">›</text>
-    </button>
+    <button class="tool-link" data-category="tools" bindtap="openTopic" hover-class="tap">WorkBuddy、豆包和 Grok<text>›</text></button>
+    <button class="tool-link" data-category="code" bindtap="openTopic" hover-class="tap">Codex 编程实战<text>›</text></button>
+    <button class="tool-link" data-category="overseas" bindtap="openTopic" hover-class="tap">短剧出海与字幕<text>›</text></button>
   </view>
-
-  <navigator class="about-link" url="/pages/about/index" hover-class="tap">关于创作玩家 <text>›</text></navigator>
+  <navigator class="about-link" url="/pages/about/index" hover-class="tap">关于创作玩家</navigator>
 </view>

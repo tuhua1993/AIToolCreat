@@ -1,4 +1,5 @@
-<view class="shell">
-  <view class="case-intro">选一个作品开始，查看用到的工具、练习预算和制作流程。</view>
-  <guide-card wx:for="{{cases}}" wx:key="id" guide="{{item}}" illustrated="{{true}}" featured="{{index === 0}}" show-date="{{true}}"></guide-card>
+<view class="shell cases">
+  <view class="section-title">实战案例</view>
+  <guide-card wx:for="{{cases}}" wx:key="id" guide="{{item}}" illustrated="{{true}}"></guide-card>
+  <view wx:if="{{coverNote}}" class="cover-note">{{coverNote}}</view>
 </view>
