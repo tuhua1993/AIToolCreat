@@ -8,16 +8,16 @@
   ],
   "window": {
     "navigationBarTitleText": "创作玩家",
-    "navigationBarBackgroundColor": "#101220",
-    "navigationBarTextStyle": "white",
-    "backgroundColor": "#101220",
+    "navigationBarBackgroundColor": "#FAF9F5",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#FAF9F5",
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
-    "color": "#9D9DB5",
-    "selectedColor": "#CBF891",
-    "backgroundColor": "#151725",
-    "borderStyle": "black",
+    "color": "#737589",
+    "selectedColor": "#2844C7",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/home/index",

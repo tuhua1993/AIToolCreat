@@ -1,27 +1,33 @@
 <view class="shell home">
   <view class="hero">
-    <image class="hero-image" src="/assets/planet-hero.jpg" mode="aspectFill" />
+    <image class="hero-image" src="/assets/studio-cover.jpg" mode="aspectFill" />
     <view class="hero-shade"></view>
-    <text class="hero-credit">AI 生成插画</text>
     <view class="hero-content">
-      <view class="hero-label"><view class="hero-dot"></view>个人 AI 创作笔记</view>
-      <view class="hero-heading">用 AI，把灵感<text class="hero-accent">做成作品</text></view>
-      <view class="hero-description">从工具上手，到做出第一个作品。</view>
-      <navigator class="primary-button hero-action" url="{{startPath}}" hover-class="tap">
-        读 WorkBuddy 入门 <text class="hero-arrow">↗</text>
-      </navigator>
+      <view class="hero-label">个人 AI 创作教程</view>
+      <view class="hero-heading">把想法<text class="hero-accent">做成作品。</text></view>
+      <button class="primary-button hero-action" bindtap="browse" hover-class="tap">
+        浏览教程 <text class="hero-arrow">↗</text>
+      </button>
     </view>
+    <text class="hero-credit">AI 生成插画</text>
   </view>
 
   <button class="search-box home-search" bindtap="search" hover-class="tap">
     <view class="search-icon"></view>
-    <text>搜索 WorkBuddy、Codex 或教程主题</text>
+    <text>搜索工具或教程</text>
+    <text class="search-arrow">›</text>
   </button>
 
-  <view class="section-bar">
-    <view class="section-title">教程分类</view>
-    <button class="section-link" bindtap="browse" hover-class="tap">全部教程 <text>›</text></button>
-  </view>
+  <navigator class="starter" url="{{startPath}}" hover-class="tap">
+    <view class="starter-icon"><image src="/assets/build.png" mode="aspectFit" /></view>
+    <view class="starter-copy">
+      <view class="starter-label">入门推荐</view>
+      <view class="starter-title">{{recommendation}}</view>
+    </view>
+    <text class="starter-arrow">↗</text>
+  </navigator>
+
+  <view class="section-title topic-heading">按主题找</view>
   <view class="topic-grid">
     <button
       wx:for="{{categories}}" wx:key="id"
@@ -30,17 +36,14 @@
       <view class="topic-icon tone-{{item.tone}}">
         <image src="/assets/{{item.icon}}.png" mode="aspectFit" />
       </view>
-      <view class="topic-copy">
-        <view class="topic-name">{{item.name}}</view>
-        <view class="topic-subtitle">{{item.subtitle}}</view>
-      </view>
+      <view class="topic-name">{{item.name}}</view>
     </button>
   </view>
 
-  <view class="section-bar featured-heading">
-    <view class="section-title">最近更新</view>
+  <view class="section-title updates-heading">最近更新</view>
+  <view class="updates">
+    <guide-card wx:for="{{recent}}" wx:key="id" guide="{{item}}" show-date="{{true}}"></guide-card>
   </view>
-  <guide-card wx:for="{{recent}}" wx:key="id" guide="{{item}}" show-date="{{true}}"></guide-card>
 
   <navigator class="about-link" url="/pages/about/index" hover-class="tap">关于创作玩家 <text>›</text></navigator>
 </view>

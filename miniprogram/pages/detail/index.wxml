@@ -43,7 +43,7 @@
   </view>
 
   <view class="check">
-    <view class="step-title lime">做完检查</view>
+    <view class="step-title check-title">做完检查</view>
     <view>{{guide.check}}</view>
   </view>
 

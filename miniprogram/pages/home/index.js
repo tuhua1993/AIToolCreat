@@ -1,11 +1,13 @@
-const { categories, findGuides } = require('../../data/guides')
+const { categories, findGuides, getGuide } = require('../../data/guides')
 const { HOME, detailPath, openLibrary } = require('../../utils/links')
+const starter = getGuide('build-site')
 
 Page({
   data: {
     categories,
     recent: findGuides('').slice(0, 3),
-    startPath: detailPath('workbuddy-first')
+    startPath: detailPath(starter.id),
+    recommendation: starter.title
   },
 
   browse() {

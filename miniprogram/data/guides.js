@@ -1,14 +1,14 @@
 const guides = require('./tutorials')
 
 const categories = [
-  { id: 'tools', name: 'AI 工具', subtitle: 'WorkBuddy · 豆包 · Grok', icon: 'spark', tone: 'lime' },
-  { id: 'code', name: 'AI 编程', subtitle: 'Codex 实战', icon: 'code', tone: 'violet' },
-  { id: 'drama', name: 'AI 短剧', subtitle: '剧本与分镜', icon: 'drama', tone: 'rose' },
-  { id: 'video', name: 'AI 短视频', subtitle: '选题、口播与剪辑', icon: 'play', tone: 'cyan' },
-  { id: 'overseas', name: '短剧出海', subtitle: '本地化与英文字幕', icon: 'globe', tone: 'cyan' },
-  { id: 'music', name: 'AI 音乐', subtitle: '写歌与配乐', icon: 'music', tone: 'rose' },
-  { id: 'fiction', name: 'AI 小说', subtitle: '人设、情节与章节', icon: 'book', tone: 'violet' },
-  { id: 'build', name: '网站·软件·App', subtitle: '把想法做成产品', icon: 'build', tone: 'lime' }
+  { id: 'tools', name: 'AI 工具', icon: 'spark', tone: 'blue' },
+  { id: 'code', name: 'AI 编程', icon: 'code', tone: 'lilac' },
+  { id: 'drama', name: 'AI 短剧', icon: 'drama', tone: 'peach' },
+  { id: 'video', name: 'AI 短视频', icon: 'play', tone: 'teal' },
+  { id: 'overseas', name: '短剧出海', icon: 'globe', tone: 'teal' },
+  { id: 'music', name: 'AI 音乐', icon: 'music', tone: 'peach' },
+  { id: 'fiction', name: 'AI 小说', icon: 'book', tone: 'lilac' },
+  { id: 'build', name: '网站·软件·App', icon: 'build', tone: 'blue' }
 ]
 
 const categoryMap = new Map(categories.map((item) => [item.id, item]))
