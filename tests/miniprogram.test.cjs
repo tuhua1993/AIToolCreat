@@ -66,9 +66,14 @@ test('教程内容的日期、图片与已公开入口有效', () => {
     assert(keys.has(scene), `README 中的小程序码教程 ID 已失效：${scene}`)
   }
   for (const id of topicKeys) assert(findGuides(id).length > 0)
+})
+
+test('每个已注册页面都有可编译的入口文件和页面配置', () => {
   for (const page of config.pages) {
-    assert(fs.existsSync(path.join(root, page + '.js')))
-    assert(fs.existsSync(path.join(root, page + '.wxml')))
+    assert(fs.existsSync(path.join(root, page + '.js')), `${page}.js 缺失`)
+    assert(fs.existsSync(path.join(root, page + '.wxml')), `${page}.wxml 缺失`)
+    const pageConfig = JSON.parse(fs.readFileSync(path.join(root, page + '.json'), 'utf8'))
+    assert(pageConfig && !Array.isArray(pageConfig) && typeof pageConfig === 'object')
   }
 })
 
