@@ -274,3 +274,47 @@ test('漫剧逐镜浏览、作品入口绑定和未发布状态', () => {
     assert.equal(detail.data.guide.resources.lyrics.length, 4)
   } finally { comic.resources.channelsVideo = original }
 })
+
+test('PDF 手册支持筛选、搜索、离线打开和失败重试', () => {
+  const page = loadPage('library')
+  page.selectFormat({ currentTarget: { dataset: { format: 'pdf' } } })
+  assert.deepEqual(ids(page.data.guides), ['comic-30s'])
+  const sample = page.data.guides[0].sample
+  assert.deepEqual(sample, getGuide('comic-30s').sample)
+  page.updateQuery({ detail: { value: '山月来信 PDF' } })
+  assert.deepEqual(ids(page.data.guides), ['comic-30s'])
+  page.selectCategory({ currentTarget: { dataset: { category: 'music' } } })
+  assert.deepEqual(page.data.guides, [])
+  page.clearFilters()
+  assert.equal(page.data.pdfOnly, false)
+  assert.equal(page.data.guides.length, tutorials.length)
+
+  let component, writes = [], reads = [], errors = 0
+  global.Component = (def) => { component = def }
+  require('../miniprogram/components/pdf-sample/index')
+  const reader = { data: { opening: false, sample }, setData(data) { Object.assign(this.data, data) } }
+  const tap = () => component.methods.openSample.call(reader)
+  global.wx = {
+    env: { USER_DATA_PATH: 'wxfile://usr' },
+    getFileSystemManager: () => ({ writeFile: (options) => writes.push(options) }),
+    openDocument: (options) => reads.push(options),
+    showToast: () => { errors++ }
+  }
+  tap()
+  tap()
+  assert.equal(writes.length, 1)
+  assert.deepEqual(Buffer.from(writes[0].data, writes[0].encoding),
+    fs.readFileSync(path.join(root, '../examples/workbooks/mountain-letter-sample.pdf')))
+  writes[0].fail()
+  assert.equal(reader.data.opening, false)
+  tap()
+  writes[1].success()
+  assert.equal(reads[0].fileType, 'pdf')
+  assert.equal(reads[0].filePath, 'wxfile://usr/mountain-letter-sample.pdf')
+  reads[0].fail()
+  assert.equal(errors, 2)
+  tap()
+  writes[2].success()
+  reads[1].success()
+  assert.equal(reader.data.opening, false)
+})

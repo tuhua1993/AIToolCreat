@@ -8,6 +8,12 @@
 
 建站案例封面来自实际运行的 [作品集示例](examples/portfolio/index.html)。在浏览器里打开该文件即可预览，示例目录包含页面所需的样式和配图。
 
+在「教程库 → PDF 手册」或对应案例详情中可直接打开[三页免费试读](examples/workbooks/mountain-letter-sample.pdf)。试读数据随小程序打包，使用微信原生文档阅读器。更新这份样章后，在仓库根目录执行下面的命令同步阅读器数据，再运行测试核对两个文件的内容一致。
+
+```sh
+node -e "const fs=require('node:fs'), id='mountain-letter-sample'; fs.writeFileSync('miniprogram/data/samples/'+id+'.js', 'module.exports = '+JSON.stringify(fs.readFileSync('examples/workbooks/'+id+'.pdf').toString('base64'))+'\n')"
+```
+
 ## 本地预览
 
 1. 打开微信开发者工具，导入本仓库根目录。保留项目里的 `touristappid` 可在游客模式编译预览页面。

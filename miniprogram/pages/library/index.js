@@ -7,6 +7,7 @@ Page({
     category: '',
     query: '',
     focusSearch: false,
+    pdfOnly: false,
     guides: findGuides('')
   },
 
@@ -16,7 +17,7 @@ Page({
     if (!entry) return
 
     app.globalData.libraryEntry = null
-    this.updateResults(entry.category, '', { focusSearch: entry.focus })
+    this.updateResults(entry.category, '', { focusSearch: entry.focus, pdfOnly: false })
   },
 
   onHide() {
@@ -24,7 +25,13 @@ Page({
   },
 
   updateResults(category, query, options = {}) {
-    this.setData({ category, query, guides: findGuides(category, query), ...options })
+    const pdfOnly = options.pdfOnly ?? this.data.pdfOnly
+    this.setData({ category, query, guides: findGuides(category, query, pdfOnly), ...options })
+  },
+
+  selectFormat(event) {
+    const pdfOnly = event.currentTarget.dataset.format === 'pdf'
+    this.updateResults(this.data.category, this.data.query, { pdfOnly, focusSearch: false })
   },
 
   selectCategory(event) {
@@ -40,7 +47,7 @@ Page({
   },
 
   clearFilters() {
-    this.updateResults('', '')
+    this.updateResults('', '', { pdfOnly: false })
   },
 
   onSearchBlur() {

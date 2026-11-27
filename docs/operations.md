@@ -20,7 +20,7 @@
 
 1. **先让基础教程免费。** 用视频和文章带来读者，在一段时间内记录哪些主题常被问到、哪些范例被要求提供完整版本。优先补齐这些主题的实操案例。
 2. **优先考虑官方赞赏。** 当后台具备资格时，可按官方流程通过「微信开发者助手」绑定本人的贴图号或公众号，申请赞赏组件。读者自愿支持，教程照常免费阅读。流量主是另一项可选收入，等有稳定访问并确认后台资格后，再评估在列表页放广告是否影响阅读。[腾讯云个人小程序变现说明](https://cloud.tencent.com/act/solution-ai-application1)
-3. **有需求后再试卖独立专题包。** 可从「AI 短剧出海实战包」开始，包含可编辑分镜表、字幕模板和一个走通的原创案例。¥29.90 可作为一次性购买的试价，是否继续由真实成交和反馈决定。上线销售前先确认对应商品允许售卖、实际服务类目、主体资质和平台支付资格。「教育信息展示」不支持课程销售。微信的个人主体虚拟支付指引当前面向服务类目含「工具」且完成认证、备案的合格小程序，专题资料或课程不能靠添加一个工具类目取得销售资格。[个人主体虚拟支付指引](https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/business-capabilities/virtual-payment/person) · [官方服务类目](https://developers.weixin.qq.com/miniprogram/product/material/)
+3. **把 ¥19.90 作为首个独立实战包的待验证价格。** 教程库已提供《山月来信》的三页免费 PDF 试读。拟售完整版应让读者用自己的故事做出成片，可加入逐镜提示词、可编辑分镜与成本表、角色不一致的修复示例、导出参数以及样片。刊登付费商品前，向公众平台明确说明实际内容、逐份售卖及交付方式，核实对应类目和主体资质。个人「教育信息展示」排除课程产品销售。个人虚拟支付要求实际服务类目含「工具」并已完成认证、备案。微信也单列出版物在线阅读类目，按实际业务核定。当前小程序仅有免费样章。未来如获准销售，完整版放在服务端，按订单校验购买权益后交付。[个人主体虚拟支付](https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/business-capabilities/virtual-payment/person) · [微信服务类目](https://developers.weixin.qq.com/miniprogram/product/material/)
 
 ## 怎么持续更新
 

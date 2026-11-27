@@ -47,7 +47,8 @@
     ]
   },
   "usingComponents": {
-    "guide-card": "/components/guide-card/index"
+    "guide-card": "/components/guide-card/index",
+    "pdf-sample": "/components/pdf-sample/index"
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -19,6 +19,8 @@
     <button data-section="case-skill" bindtap="jumpToCaseSection" hover-class="tap">Skill</button>
   </view>
 
+  <pdf-sample wx:if="{{guide.sample}}" sample="{{guide.sample}}" cover="{{guide.cover.src}}"></pdf-sample>
+
   <view wx:if="{{guide.resources.frames}}" class="case-figure">
     <view class="figure-heading">《山月来信》分镜手记</view>
     <image class="case-image" src="{{guide.resources.frames[frameIndex].src}}" mode="widthFix"

@@ -1,6 +1,12 @@
 // 同一天更新的教程按本文件中的顺序展示。
 const guides = [
   {
+    sample: {
+      id: 'mountain-letter-sample',
+      title: '《山月来信》真人漫剧分镜手册',
+      pages: 3,
+      description: '六镜时间线、两镜对照、提示词与返工预算'
+    },
     id: 'comic-30s', category: 'drama', time: 10, updatedOn: '2026-11-27',
     title: '制作一部30秒AI真人漫剧',
     summary: '跟着《山月来信》的六张分镜，学会把一个发现藏进 30 秒的画面里。',

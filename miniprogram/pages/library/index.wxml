@@ -10,6 +10,10 @@
     <button wx:if="{{query}}" class="clear-search" bindtap="clearQuery" aria-label="清空搜索" hover-class="tap">×</button>
   </view>
 
+  <view class="library-formats">
+    <button class="{{!pdfOnly ? 'selected' : ''}}" aria-pressed="{{!pdfOnly}}" data-format="all" bindtap="selectFormat">全部教程</button>
+    <button class="{{pdfOnly ? 'selected' : ''}}" aria-pressed="{{pdfOnly}}" data-format="pdf" bindtap="selectFormat">PDF 手册</button>
+  </view>
   <view class="filters" aria-label="教程分类">
     <button
       wx:for="{{categories}}" wx:key="id" class="filter {{category === item.id ? 'active' : ''}}"
@@ -18,10 +22,15 @@
     >{{item.name}}</button>
   </view>
 
-  <view class="result-count">{{guides.length}} 篇教程</view>
-  <guide-card wx:for="{{guides}}" wx:key="id" guide="{{item}}"></guide-card>
+  <view class="result-count">{{guides.length}}{{pdfOnly ? " 本手册" : " 篇教程"}}</view>
+  <block wx:if="{{pdfOnly}}">
+    <pdf-sample wx:for="{{guides}}" wx:key="id" sample="{{item.sample}}" cover="{{item.cover.src}}"></pdf-sample>
+  </block>
+  <block wx:else>
+    <guide-card wx:for="{{guides}}" wx:key="id" guide="{{item}}"></guide-card>
+  </block>
   <view wx:if="{{!guides.length}}" class="empty-state">
-    <view class="empty-title">没有找到匹配的教程</view>
+    <view class="empty-title">{{pdfOnly ? '当前条件下没有 PDF 手册' : '没有找到匹配的教程'}}</view>
     <view class="empty-body">试试工具名称或更短的关键词。</view>
     <button class="primary-button" bindtap="clearFilters" hover-class="tap">查看全部教程</button>
   </view>

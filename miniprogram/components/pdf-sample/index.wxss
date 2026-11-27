@@ -1,0 +1,8 @@
+.reader { box-sizing: border-box; display: flex; align-items: center; gap: 22rpx; width: 100%; margin: 10rpx 0 26rpx; padding: 21rpx; border: 1px solid #e3dfed; border-radius: 18rpx; background: #faf9fd; text-align: left; line-height: 1.45; }
+.reader::after { border: 0; }
+.cover { display: block; flex: 0 0 110rpx; width: 110rpx; height: 144rpx; border-radius: 8rpx; }
+.copy { min-width: 0; flex: 1; }
+.title { color: #282437; font-size: 29rpx; font-weight: 700; }
+.description { margin: 6rpx 0; color: #615c69; font-size: 24rpx; }
+.action { color: #5b459f; font-size: 24rpx; font-weight: 650; }
+.pressed { opacity: .75; }

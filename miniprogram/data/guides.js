@@ -23,7 +23,7 @@ const catalog = guides.slice().sort((a, b) => b.updatedOn.localeCompare(a.update
 const guideMap = new Map(catalog.map((item) => [item.id, item]))
 const searchable = catalog.map((guide) => ({
   guide,
-  fields: [guide.title, guide.summary, guide.topic.name, ...(guide.keywords || [])]
+  fields: [guide.title, guide.summary, guide.topic.name, ...(guide.sample ? ['PDF 手册 试读', guide.sample.title, guide.sample.description] : []), ...(guide.keywords || [])]
     .map((field) => searchTerms(field).join(''))
 }))
 
@@ -36,13 +36,14 @@ function getGuide(id) {
 }
 
 function getCard(guide) {
-  const { id, title, summary, time, topic, updatedOn, cover, caseNote } = guide
-  return { id, title, summary, time, topic, updatedOn, cover: cover || null, caseNote: caseNote || '' }
+  const { id, title, summary, time, topic, updatedOn, cover, caseNote, sample } = guide
+  return { id, title, summary, time, topic, updatedOn, cover: cover || null, caseNote: caseNote || '', sample: sample || null }
 }
 
-function findGuides(category, query = '') {
+function findGuides(category, query = '', pdfOnly = false) {
   const terms = searchTerms(query)
   return searchable.filter(({ guide, fields }) => {
+    if (pdfOnly && !guide.sample) return false
     if (category && guide.category !== category) return false
     return terms.every((term) => fields.some((field) => field.includes(term)))
   }).map(({ guide }) => getCard(guide))

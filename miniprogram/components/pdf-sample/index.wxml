@@ -1,0 +1,8 @@
+<button wx:if="{{sample}}" class="reader" bindtap="openSample" disabled="{{opening}}" hover-class="pressed" aria-label="{{sample.title}}，免费试读 {{sample.pages}} 页">
+  <image wx:if="{{cover}}" class="cover" src="{{cover}}" mode="aspectFill" />
+  <view class="copy">
+    <view class="title">{{sample.title}}</view>
+    <view class="description">{{sample.description}}</view>
+    <view class="action">{{opening ? '正在打开…' : '免费读 PDF'}} · {{sample.pages}} 页</view>
+  </view>
+</button>

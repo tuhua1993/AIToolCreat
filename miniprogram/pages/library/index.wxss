@@ -1,3 +1,6 @@
+.library-formats { display: flex; margin-top: 22rpx; border-bottom: 1px solid #e8e6ed; gap: 32rpx; }
+.library-formats button { padding: 16rpx 2rpx; border-bottom: 4rpx solid transparent; color: #676570; font-size: 29rpx; }
+.library-formats button.selected { border-color: #7762db; color: #42347d; font-weight: 700; }
 .search-input { flex: 1; min-width: 0; width: 0; height: 65rpx; font-size: 28rpx; }
 .search-placeholder { color: #64697a; }
 .clear-search { flex: 0 0 60rpx; min-height: 58rpx; color: #5e6275; font-size: 37rpx; }
