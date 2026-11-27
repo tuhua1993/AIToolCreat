@@ -3,6 +3,7 @@
     <view class="card-meta">
       <text class="tag {{guide.topic.tone}}">{{guide.topic.name}}</text>
       <text>{{guide.time}} 分钟</text>
+      <text wx:if="{{showDate && guide.updatedOn}}">{{guide.updatedOn}} 更新</text>
     </view>
     <view class="card-title">{{guide.title}}</view>
     <view class="card-summary">{{guide.summary}}</view>

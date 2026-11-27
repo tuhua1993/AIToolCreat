@@ -5,13 +5,14 @@ const { HOME, detailPath, openLibrary, guideIdFromOptions } = require('../../uti
 Page({
   data: {
     guide: null,
-    bookmarked: false
+    bookmarked: false,
+    hiddenFigures: {},
+    enlargedFigure: ''
   },
 
   onLoad(options) {
     const guide = getGuide(guideIdFromOptions(options))
-    this.setData({ guide })
-    if (guide) this.refreshBookmark()
+    this.setData({ guide, hiddenFigures: {}, enlargedFigure: '' })
   },
 
   onShow() {
@@ -47,8 +48,27 @@ Page({
     })
   },
 
+  previewFigure(event) {
+    const { src } = event.currentTarget.dataset
+    wx.previewImage({
+      current: src,
+      urls: [src],
+      showmenu: false,
+      fail: () => this.setData({ enlargedFigure: src })
+    })
+  },
+
+  closeFigure() {
+    this.setData({ enlargedFigure: '' })
+  },
+
+  hideBrokenFigure(event) {
+    const { index } = event.currentTarget.dataset
+    this.setData({ [`hiddenFigures.${index}`]: true })
+  },
+
   browse() {
-    openLibrary('')
+    openLibrary(this.data.guide ? this.data.guide.category : '')
   },
 
   onShareAppMessage() {

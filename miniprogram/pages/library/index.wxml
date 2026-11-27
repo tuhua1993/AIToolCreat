@@ -1,6 +1,4 @@
 <view class="shell">
-  <view class="page-heading">教程库</view>
-  <view class="page-intro">按主题找教程，跟着步骤做一个小作品。</view>
   <view class="search-box">
     <view class="search-icon"></view>
     <input

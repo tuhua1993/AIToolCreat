@@ -8,7 +8,8 @@ Component({
       observer(guide) {
         this.setData({ url: guide ? detailPath(guide.id) : '' })
       }
-    }
+    },
+    showDate: { type: Boolean, value: false }
   },
   data: { url: '' }
 })

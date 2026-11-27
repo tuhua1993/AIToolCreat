@@ -22,6 +22,7 @@
 }
 
 .hero-content { position: relative; padding: 32rpx 30rpx; }
+.hero-credit { position: absolute; right: 17rpx; bottom: 15rpx; padding: 3rpx 10rpx; border-radius: 8rpx; background: #141224; color: #d8d1e8; font-size: 21rpx; }
 .hero-label { display: flex; align-items: center; gap: 11rpx; color: #ddd5f5; font-size: 23rpx; }
 .hero-dot { width: 11rpx; height: 11rpx; border-radius: 50%; background: #cbf891; box-shadow: 0 0 18rpx #9ae06b; }
 .hero-heading { margin-top: 14rpx; font-size: 60rpx; font-weight: 780; letter-spacing: -2rpx; line-height: 1.13; }
@@ -29,7 +30,7 @@
 .hero-description { margin-top: 12rpx; color: #ddd5e9; font-size: 25rpx; }
 .hero-action { display: inline-flex; min-height: 66rpx; margin-top: 22rpx; padding: 10rpx 23rpx; border-radius: 18rpx; }
 .hero-arrow { margin-left: 14rpx; font-size: 29rpx; }
-.home-search { width: 100%; margin: 22rpx 0 32rpx; color: #b9bbd0; font-size: 25rpx; }
+.home-search { width: 100%; min-height: 94rpx; margin: 22rpx 0 32rpx; color: #b9bbd0; font-size: 25rpx; }
 
 .section-bar { display: flex; align-items: center; justify-content: space-between; min-height: 48rpx; margin-bottom: 16rpx; }
 .section-link { display: flex; align-items: center; gap: 9rpx; color: #cbf891; font-size: 24rpx; }
@@ -67,6 +68,6 @@
 .tone-cyan { background: #23343f; }
 .topic-copy { min-width: 0; }
 .topic-name { font-size: 26rpx; line-height: 1.3; font-weight: 700; }
-.topic-subtitle { margin-top: 4rpx; color: #adafc6; font-size: 20rpx; line-height: 1.35; }
+.topic-subtitle { margin-top: 4rpx; color: #adafc6; font-size: 22rpx; line-height: 1.35; }
 .featured-heading { margin-top: 34rpx; }
 .about-link { display: flex; align-items: center; justify-content: center; gap: 12rpx; margin-top: 32rpx; color: #adafc6; font-size: 25rpx; }

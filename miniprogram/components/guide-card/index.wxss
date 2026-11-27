@@ -12,10 +12,10 @@
 
 .card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12rpx; color: #adafc6; font-size: 21rpx; }
 .tag { padding: 2rpx 10rpx; border-radius: 8rpx; }
-.lime { background: #2a382e; color: #cbf891; }
-.violet { background: #322b48; color: #c8b6ff; }
-.rose { background: #3b283d; color: #ffbed4; }
-.cyan { background: #23343f; color: #9ee9f1; }
+.tag.lime { background: #2a382e; color: #cbf891; }
+.tag.violet { background: #322b48; color: #c8b6ff; }
+.tag.rose { background: #3b283d; color: #ffbed4; }
+.tag.cyan { background: #23343f; color: #9ee9f1; }
 .card-title { margin: 9rpx 0 3rpx; color: #f4f3fb; font-size: 29rpx; font-weight: 700; line-height: 1.4; }
 .card-summary { color: #adafc6; font-size: 24rpx; line-height: 1.55; }
 .card-arrow { flex: 0 0 auto; color: #b7b2ca; font-size: 38rpx; line-height: 1; }

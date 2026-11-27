@@ -8,7 +8,7 @@
 
 1. 打开微信开发者工具，导入本仓库根目录。保留项目里的 `touristappid` 可在游客模式编译预览页面。
 2. 验证首页、分类、搜索和详情。测试指定教程入口时，在开发者工具的编译模式中选择 `pages/detail/index`，参数填写 `scene=codex-first`。
-3. 准备发布时，在微信公众平台核对「创作玩家」的账号信息，从账号实际开放的类目里确认图文教程对应的服务类目。用正式 AppID 导入项目，在真机上验证分享和扫码，再上传提审。正式 AppSecret 仅由服务端保管。
+3. 准备发布时，在微信公众平台核对「创作玩家」的账号信息、服务类目和备案。用正式 AppID 导入项目，在真机上验证分享和扫码，再上传提审。正式 AppSecret 仅由服务端保管。
 
 ## 在视频和文章里推广
 
@@ -16,7 +16,7 @@
 
 正式版发布后可在视频结尾、封面或文章中放小程序码。微信内可以把教程详情作为小程序卡片转发。对应专题的小程序码可以调用[微信获取不限制小程序码接口](https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/qrcode-link/qr-code/getUnlimitedQRCode.html)，`page` 用 `pages/detail/index`，`scene` 用对应教程 ID。宣传前用正式版扫码验证；在站外发布时按各渠道对小程序码和引流的规则操作。
 
-| 教程主题 | `scene` |
+| 教程主题 | 扫码参数 `scene` |
 | --- | --- |
 | WorkBuddy | `workbuddy-first` |
 | Codex | `codex-first` |
@@ -33,7 +33,9 @@
 
 ## 更新内容
 
-在 [教程数据](miniprogram/data/guides.js) 中新增分类或教程。教程 ID 用不超过 32 个字符的小写字母、数字和连字符，发布后保留原 ID，让已发出去的卡片和小程序码继续指向对应教程。项目使用原生小程序组件和本地数据，导入后可以直接编译。
+在 [教程正文](miniprogram/data/tutorials.js) 中新增或修订教程，填写实际更新日期。首页会自动展示最近更新的三篇。原有教程 ID 同时用于收藏、分享和小程序码，修订正文时保留原 ID。项目使用原生小程序组件和本地数据，导入后可以直接编译。
+
+内容更新后运行 `node --test tests/miniprogram.test.cjs`，检查日期、图片文件、教程 ID 和主要交互。[更新流程、类目和变现计划](docs/operations.md)
 
 ## 首页插画
 

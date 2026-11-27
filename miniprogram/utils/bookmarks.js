@@ -2,7 +2,9 @@ const STORAGE_KEY = 'creator-planet-bookmarks'
 
 function readBookmarks() {
   const saved = wx.getStorageSync(STORAGE_KEY)
-  return Array.isArray(saved) ? saved.filter((id) => typeof id === 'string') : []
+  return Array.isArray(saved)
+    ? [...new Set(saved.filter((id) => typeof id === 'string' && id.trim()))]
+    : []
 }
 
 function toggleBookmark(id) {

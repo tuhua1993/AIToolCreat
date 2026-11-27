@@ -1,5 +1,4 @@
 <view class="shell">
-  <view class="page-heading">我的收藏</view>
   <view class="page-intro">收藏保存在当前设备，方便下次接着做。</view>
   <guide-card wx:for="{{guides}}" wx:key="id" guide="{{item}}"></guide-card>
   <view wx:if="{{loadError}}" class="empty-state">

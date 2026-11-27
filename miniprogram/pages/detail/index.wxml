@@ -1,7 +1,16 @@
 <view class="shell detail" wx:if="{{guide}}">
-  <view class="detail-meta"><text class="detail-topic">{{guide.topic.name}}</text><text>约 {{guide.time}} 分钟</text></view>
+  <view class="detail-meta">
+    <text class="detail-topic">{{guide.topic.name}}</text>
+    <text>约 {{guide.time}} 分钟</text>
+  </view>
   <view class="page-heading detail-title">{{guide.title}}</view>
   <view class="page-intro detail-intro">{{guide.summary}}</view>
+  <view class="detail-tools">
+    <text class="updated-on">{{guide.updatedOn}} 更新</text>
+    <button class="save-button {{bookmarked ? 'is-saved' : ''}}" bindtap="changeBookmark" hover-class="tap" aria-pressed="{{bookmarked}}">
+      {{bookmarked ? '取消收藏' : '收藏教程'}}
+    </button>
+  </view>
 
   <view class="outcome">
     <view class="outcome-label">这篇会做出什么</view>
@@ -14,6 +23,14 @@
     <view class="step-copy">
       <view class="step-title">{{item.title}}</view>
       <view class="step-body">{{item.body}}</view>
+      <view class="step-figure" wx:if="{{item.figure && !hiddenFigures[index]}}">
+        <image
+          class="figure-image" src="{{item.figure.src}}" mode="widthFix" lazy-load="{{true}}"
+          aria-label="{{item.figure.alt}}" data-src="{{item.figure.src}}" data-index="{{index}}"
+          bindtap="previewFigure" binderror="hideBrokenFigure"
+        />
+        <view class="figure-caption">{{item.figure.alt}} · 点图放大</view>
+      </view>
     </view>
   </view>
 
@@ -31,9 +48,7 @@
   </view>
 
   <view class="detail-actions">
-    <button class="primary-button bookmark" bindtap="changeBookmark" hover-class="tap" aria-pressed="{{bookmarked}}">
-      {{bookmarked ? '取消收藏' : '收藏教程'}}
-    </button>
+    <button class="primary-button" bindtap="browse" hover-class="tap">同类教程</button>
     <button class="secondary-button" open-type="share" hover-class="tap">分享教程</button>
   </view>
 </view>
@@ -43,4 +58,8 @@
     <view class="empty-body">可以在教程库里查找相关主题。</view>
     <button class="primary-button" bindtap="browse" hover-class="tap">打开教程库</button>
   </view>
+</view>
+<view wx:if="{{enlargedFigure}}" class="figure-viewer">
+  <image class="figure-large" src="{{enlargedFigure}}" mode="aspectFit" />
+  <button class="figure-close" bindtap="closeFigure" hover-class="tap">关闭大图</button>
 </view>

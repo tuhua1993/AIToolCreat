@@ -1,4 +1,5 @@
-.about-cover { display: block; width: 100%; height: 278rpx; margin-bottom: 24rpx; border: 1rpx solid #423b60; border-radius: 22rpx; background: #211b36; }
+.about-cover { display: block; width: 100%; height: 278rpx; border: 1rpx solid #423b60; border-radius: 22rpx; background: #211b36; }
+.about-credit { margin-top: 8rpx; color: #adafc6; text-align: right; font-size: 22rpx; }
 .about-copy { margin-top: 15rpx; color: #c2c3d6; font-size: 29rpx; line-height: 1.8; }
 .about-copy view + view { margin-top: 18rpx; }
 .about-action { width: 100%; margin-top: 28rpx; }

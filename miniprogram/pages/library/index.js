@@ -16,16 +16,19 @@ Page({
     if (!entry) return
 
     app.globalData.libraryEntry = null
-    this.updateResults(entry.category, '')
-    this.setData({ focusSearch: entry.focus })
+    this.updateResults(entry.category, '', { focusSearch: entry.focus })
   },
 
-  updateResults(category, query) {
-    this.setData({ category, query, guides: findGuides(category, query) })
+  onHide() {
+    this.onSearchBlur()
+  },
+
+  updateResults(category, query, options = {}) {
+    this.setData({ category, query, guides: findGuides(category, query), ...options })
   },
 
   selectCategory(event) {
-    this.updateResults(event.currentTarget.dataset.category, this.data.query)
+    this.updateResults(event.currentTarget.dataset.category, this.data.query, { focusSearch: false })
   },
 
   updateQuery(event) {

@@ -1,10 +1,10 @@
-const { categories, getGuide, getCard } = require('../../data/guides')
+const { categories, findGuides } = require('../../data/guides')
 const { HOME, detailPath, openLibrary } = require('../../utils/links')
 
 Page({
   data: {
     categories,
-    featured: ['workbuddy-first', 'codex-first', 'video-30s'].map((id) => getCard(getGuide(id))),
+    recent: findGuides('').slice(0, 3),
     startPath: detailPath('workbuddy-first')
   },
 
@@ -21,6 +21,6 @@ Page({
   },
 
   onShareAppMessage() {
-    return { title: '创作玩家｜我的 AI 创作教程', path: HOME, imageUrl: '/assets/planet-hero.jpg' }
+    return { title: '创作玩家｜我的 AI 创作教程', path: HOME }
   }
 })
