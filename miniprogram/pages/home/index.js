@@ -1,17 +1,35 @@
-const { categories, findGuides, getGuide } = require('../../data/guides')
-const { HOME, detailPath, openLibrary } = require('../../utils/links')
-const starter = getGuide('build-site')
+const { categories, findCases } = require('../../data/guides')
+const { HOME, CASES, openLibrary } = require('../../utils/links')
+
+const creationOrder = ['drama', 'music', 'fiction', 'video', 'build', 'overseas']
+const creationTopics = creationOrder.map((id) => categories.find((topic) => topic.id === id))
+
+function mastheadMetrics() {
+  const windowInfo = wx.getWindowInfo ? wx.getWindowInfo() : wx.getSystemInfoSync()
+  const statusBar = windowInfo.statusBarHeight || 0
+  const menu = wx.getMenuButtonBoundingClientRect() || {}
+  const menuInset = menu.top - statusBar
+  const menuFits = menu.height > 0 && menuInset >= 0 && menuInset < 24
+  return {
+    statusBar,
+    menuHeight: menuFits ? menu.height + menuInset * 2 : 44
+  }
+}
 
 Page({
   data: {
-    categories,
-    recent: findGuides('').slice(0, 3),
-    startPath: detailPath(starter.id),
-    recommendation: starter.title
+    creationTopics,
+    recent: findCases().slice(0, 3),
+    statusBar: 20,
+    menuHeight: 44
   },
 
-  browse() {
-    openLibrary('')
+  onLoad() {
+    if (wx.getMenuButtonBoundingClientRect) this.setData(mastheadMetrics())
+  },
+
+  openCases() {
+    wx.switchTab({ url: CASES })
   },
 
   search() {

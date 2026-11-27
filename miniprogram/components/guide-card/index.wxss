@@ -20,3 +20,31 @@
 .card-summary { color: #565b6d; font-size: 25rpx; line-height: 1.54; }
 .card-arrow { flex: 0 0 auto; color: #485ab8; font-size: 36rpx; line-height: 1; }
 .pressed { opacity: .72; }
+
+.card.illustrated {
+  gap: 19rpx;
+  margin: 0;
+  padding: 18rpx 0;
+  border: 0;
+  border-bottom: 1rpx solid #dfded7;
+  border-radius: 0;
+  background: transparent;
+}
+
+.illustrated .card-main { flex: 1; }
+.illustrated .card-title { margin: 0 0 5rpx; font-size: 30rpx; line-height: 1.32; }
+.illustrated .card-summary { font-size: 24rpx; line-height: 1.36; }
+.illustrated .card-arrow { align-self: center; color: #383c50; }
+.case-date { margin-top: 6rpx; color: #616371; font-size: 21rpx; }
+.card-cover { display: flex; flex: 0 0 152rpx; align-items: center; justify-content: center; overflow: hidden; width: 152rpx; height: 118rpx; border-radius: 16rpx; }
+.cover-photo { display: block; width: 100%; height: 100%; }
+.cover-icon { width: 56rpx; height: 56rpx; }
+.cover-blue { background: #e8edff; }
+.cover-lilac { background: #efe9fb; }
+.cover-peach { background: #faebe2; }
+.cover-teal { background: #e1f1ec; }
+.card.illustrated.featured { position: relative; display: block; overflow: hidden; margin: 14rpx 0 5rpx; padding: 0; border: 1rpx solid #e6e5e1; border-radius: 21rpx; background: #fff; }
+.featured .card-cover { width: 100%; height: 312rpx; border-radius: 0; }
+.featured .card-main { padding: 20rpx 55rpx 23rpx 22rpx; }
+.featured .card-title { font-size: 35rpx; }
+.featured .card-arrow { position: absolute; right: 23rpx; bottom: 47rpx; }

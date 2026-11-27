@@ -19,6 +19,6 @@
 一条新视频或文章配一篇短教程，先定为每周一篇。每篇保留一个可复做的目标、实操步骤、提示词和检查方法。有助于理解的画面就配一张图。每月检查阅读需求最高、最早更新或依赖工具界面的教程，复做后改正文和更新日期。
 
 1. 以 [教程正文](../miniprogram/data/tutorials.js) 为内容源。新增一条时分配唯一 ID、填写分类和 `updatedOn`。更新旧文章时沿用原 ID，保证已发的分享和小程序码继续可用。图放入 `miniprogram/assets/tutorials/`，在对应步骤的第三项写入 `{ src, alt }`，例如 [30 秒教程](../miniprogram/data/tutorials.js)。
-2. 更新 [推广表](../README.md#在视频和文章里推广) 中对应的扫码参数。运行 `node --test tests/miniprogram.test.cjs`。这会检查教程日期、图片存在性、重复 ID、现有扫码入口和浏览交互。首页会按更新日期自动取最近三篇。
+2. 更新 [推广表](../README.md#在视频和文章里推广) 中对应的扫码参数。运行 `node --test tests/miniprogram.test.cjs`。这会检查教程日期、图片存在性、重复 ID、现有扫码入口和浏览交互。带有工具和 Skill 的教程在 [案例资源](../miniprogram/data/case-resources.js) 中登记，首页会按更新日期自动取最近三个案例。
 3. 当前教程随小程序代码打包。GitHub 是版本记录，线上读者看到的是微信已发布版本。首版可以每周合并一批内容，再通过微信开发者工具上传，经平台流程发布。
 4. 当更新频率高到每次发版都影响更新节奏，再开通绑定正式 AppID 的微信云开发，用「草稿 → 人工审核 → 发布」维护同一类目的图文内容。公开端只读取已发布记录，并保留既有 ID、版本记录与最近一次有效内容。编辑和发布权限留给管理员。新版的小程序代码与功能仍走微信正常审核，内容更新也受平台运营规范约束。[微信云开发小程序端文档](https://cloud.tencent.cn/document/product/876/19385) · [微信平台运营规范](https://developers.weixin.qq.com/miniprogram/product/)

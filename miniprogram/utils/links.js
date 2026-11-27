@@ -1,5 +1,6 @@
 const HOME = '/pages/home/index'
 const LIBRARY = '/pages/library/index'
+const CASES = '/pages/cases/index'
 const DETAIL = '/pages/detail/index'
 
 function detailPath(id) {
@@ -28,4 +29,4 @@ function guideIdFromOptions(options = {}) {
   }
 }
 
-module.exports = { HOME, LIBRARY, detailPath, openLibrary, guideIdFromOptions }
+module.exports = { HOME, LIBRARY, CASES, detailPath, openLibrary, guideIdFromOptions }

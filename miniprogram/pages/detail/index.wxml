@@ -1,7 +1,7 @@
 <view class="shell detail" wx:if="{{guide}}">
   <view class="detail-meta">
     <text class="detail-topic">{{guide.topic.name}}</text>
-    <text>约 {{guide.time}} 分钟</text>
+    <text>阅读约 {{guide.time}} 分钟</text>
   </view>
   <view class="page-heading detail-title">{{guide.title}}</view>
   <view class="page-intro detail-intro">{{guide.summary}}</view>
@@ -12,12 +12,46 @@
     </button>
   </view>
 
+  <view class="case-jumps" wx:if="{{guide.resources}}" aria-label="案例目录">
+    <button data-section="case-tools" bindtap="jumpToCaseSection" hover-class="tap">工具</button>
+    <button data-section="case-budget" bindtap="jumpToCaseSection" hover-class="tap">成本</button>
+    <button data-section="case-process" bindtap="jumpToCaseSection" hover-class="tap">流程</button>
+    <button data-section="case-skill" bindtap="jumpToCaseSection" hover-class="tap">Skill</button>
+  </view>
+
+  <view class="detail-cover" wx:if="{{guide.cover}}">
+    <image src="{{guide.cover.src}}" mode="aspectFill" aria-label="{{guide.cover.alt}}" />
+    <text>{{guide.cover.credit}}</text>
+  </view>
+
   <view class="outcome">
     <view class="outcome-label">这篇会做出什么</view>
     <view>{{guide.outcome}}</view>
   </view>
 
-  <view class="section-title detail-heading">实操步骤</view>
+  <view wx:if="{{guide.resources}}" class="case-resources" id="case-tools">
+    <view class="section-title">工具清单</view>
+    <view class="resources-heading">{{guide.resources.evidence}}</view>
+    <view class="case-tool" wx:for="{{guide.resources.tools}}" wx:key="name">
+      <view class="case-tool-name">{{item.name}}</view>
+      <view>{{item.role}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{guide.resources}}" class="case-budget" id="case-budget">
+    <view class="budget-top">
+      <view class="section-title">制作预算</view>
+      <text>练习估算</text>
+    </view>
+    <view class="budget-total">{{guide.resources.budget.headline}}</view>
+    <view class="budget-note">{{guide.resources.budget.note}}</view>
+    <view class="budget-line" wx:for="{{guide.resources.budget.items}}" wx:key="name">
+      <text class="budget-label">{{item.name}}</text>
+      <text>{{item.cost}}</text>
+    </view>
+  </view>
+
+  <view class="section-title detail-heading" id="case-process">{{guide.resources ? '制作流程' : '实操步骤'}}</view>
   <view class="step" wx:for="{{guide.steps}}" wx:key="title">
     <text class="step-number">{{index + 1}}</text>
     <view class="step-copy">
@@ -45,6 +79,22 @@
   <view class="check">
     <view class="step-title check-title">做完检查</view>
     <view>{{guide.check}}</view>
+  </view>
+
+  <view wx:if="{{guide.resources}}" class="case-resources" id="case-skill">
+    <view class="section-title">配套 Skill</view>
+    <view class="skill-card">
+      <view class="skill-name">{{guide.resources.skill.title}}</view>
+      <view class="skill-description">{{guide.resources.skill.description}}</view>
+      <view class="skill-actions">
+        <button class="copy" bindtap="copySkill" hover-class="tap">复制 Skill</button>
+        <button class="skill-toggle" bindtap="toggleSkill" hover-class="tap" aria-expanded="{{showSkill}}">
+          {{showSkill ? '收起内容' : '查看内容'}}
+        </button>
+      </view>
+      <view class="skill-hint">复制后保存到 {{guide.resources.skill.id}}/SKILL.md，再按所用客户端的说明添加。</view>
+      <text wx:if="{{showSkill}}" class="skill-preview" user-select="{{true}}">{{guide.resources.skill.markdown}}</text>
+    </view>
   </view>
 
   <view class="detail-actions">

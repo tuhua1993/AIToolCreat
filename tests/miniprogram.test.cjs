@@ -3,7 +3,7 @@ const assert = require('node:assert/strict')
 const fs = require('node:fs')
 const path = require('node:path')
 
-const { categories, findGuides, getGuide } = require('../miniprogram/data/guides')
+const { categories, findGuides, findCases, getGuide } = require('../miniprogram/data/guides')
 const tutorials = require('../miniprogram/data/tutorials')
 const config = require('../miniprogram/app.json')
 const { detailPath, guideIdFromOptions } = require('../miniprogram/utils/links')
@@ -75,6 +75,11 @@ test('每个已注册页面都有可编译的入口文件和页面配置', () =>
     const pageConfig = JSON.parse(fs.readFileSync(path.join(root, page + '.json'), 'utf8'))
     assert(pageConfig && !Array.isArray(pageConfig) && typeof pageConfig === 'object')
   }
+  for (const tab of config.tabBar.list) {
+    assert(config.pages.includes(tab.pagePath))
+    assert(fs.existsSync(path.join(root, tab.iconPath)))
+    assert(fs.existsSync(path.join(root, tab.selectedIconPath)))
+  }
 })
 
 test('搜索识别常见写法并与分类一起生效', () => {
@@ -82,12 +87,12 @@ test('搜索识别常见写法并与分类一起生效', () => {
     ['Work Buddy', 'workbuddy-first'],
     ['ＣＯＤＥＸ', 'codex-first'],
     ['Grok-Bot', 'grok-bot'],
-    ['AI短剧', 'drama-storyboard'],
+    ['AI短剧', ['comic-30s', 'drama-storyboard']],
     ['AI做网站', 'build-site'],
     ['英文 字幕', 'drama-en']
   ]
-  for (const [query, id] of cases) {
-    assert.deepEqual(ids(findGuides('', query)), [id], query)
+  for (const [query, expected] of cases) {
+    assert.deepEqual(ids(findGuides('', query)), [].concat(expected), query)
   }
   assert.deepEqual(findGuides('fiction', 'Codex'), [])
   assert.deepEqual(ids(findGuides('fiction', '  ')), ['fiction-chapter'])
@@ -95,18 +100,28 @@ test('搜索识别常见写法并与分类一起生效', () => {
 
 test('首页展示最新教程，入口打开指定分类或搜索', () => {
   global.getApp = () => app
-  global.wx = { switchTab: ({ url }) => assert.equal(url, '/pages/library/index') }
+  let lastTab
+  global.wx = {
+    switchTab: ({ url }) => { lastTab = url },
+    getWindowInfo: () => ({ statusBarHeight: 47 }),
+    getMenuButtonBoundingClientRect: () => ({ top: 53, height: 32 })
+  }
   const home = loadPage('home')
   const library = loadPage('library')
 
-  assert.deepEqual(ids(home.data.recent), ids(findGuides('').slice(0, 3)))
+  assert.deepEqual(ids(home.data.recent), ids(findCases().slice(0, 3)))
+  assert.deepEqual(ids(home.data.creationTopics), ['drama', 'music', 'fiction', 'video', 'build', 'overseas'])
   const days = findGuides('').map(({ updatedOn }) => updatedOn)
   assert.deepEqual(days, [...days].sort().reverse())
-  assert.equal(home.data.startPath, detailPath('build-site'))
-  assert.equal(home.data.recommendation, getGuide('build-site').title)
+  home.onLoad()
+  assert.equal(home.data.statusBar, 47)
+  assert.equal(home.data.menuHeight, 44)
+  home.openCases()
+  assert.equal(lastTab, '/pages/cases/index')
   home.openTopic({ currentTarget: { dataset: { category: 'drama' } } })
+  assert.equal(lastTab, '/pages/library/index')
   library.onShow()
-  assert.deepEqual(ids(library.data.guides), ['drama-storyboard'])
+  assert.deepEqual(ids(library.data.guides), ['comic-30s', 'drama-storyboard'])
   assert.equal(app.globalData.libraryEntry, null)
 
   home.search()
@@ -120,6 +135,44 @@ test('首页展示最新教程，入口打开指定分类或搜索', () => {
   library.onShow()
   assert.equal(library.data.focusSearch, true)
   assert.equal(library.data.query, '')
+})
+
+test('实战案例具备封面、制作预算、流程入口与可复制的 SKILL.md', () => {
+  let clipboard
+  let scrollTarget
+  global.wx = {
+    setClipboardData: ({ data }) => { clipboard = data },
+    pageScrollTo: ({ selector }) => { scrollTarget = selector }
+  }
+  const casesPage = loadPage('cases')
+  const detail = loadPage('detail')
+  assert.deepEqual(ids(casesPage.data.cases), ids(findCases()))
+  assert.equal(casesPage.onShareAppMessage().path, '/pages/cases/index')
+  assert(casesPage.data.cases.length >= 3)
+
+  for (const { id, cover } of casesPage.data.cases) {
+    assert(cover.alt.trim())
+    assert(cover.credit.trim())
+    assert(fs.statSync(path.join(root, cover.src.slice(1))).isFile())
+    detail.onLoad({ scene: id })
+    assert.equal(detail.data.showSkill, false)
+    const { skill, tools, budget, evidence } = detail.data.guide.resources
+    const [, nameLine, descriptionLine, endHeader] = skill.markdown.split('\n')
+    assert.match(skill.id, /^[a-z0-9-]{1,63}$/)
+    assert.equal(nameLine, `name: ${skill.id}`)
+    assert.equal(JSON.parse(descriptionLine.slice('description: '.length)), skill.description)
+    assert.equal(endHeader, '---')
+    assert(tools.every((tool) => tool.name.trim() && tool.role.trim()))
+    assert(evidence.trim())
+    assert(budget.headline.trim() && budget.note.trim())
+    assert(budget.items.every((item) => item.name.trim() && item.cost.trim()))
+    detail.jumpToCaseSection({ currentTarget: { dataset: { section: 'case-budget' } } })
+    assert.equal(scrollTarget, '#case-budget')
+    detail.toggleSkill()
+    assert.equal(detail.data.showSkill, true)
+    detail.copySkill()
+    assert.equal(clipboard, skill.markdown)
+  }
 })
 
 test('详情扫码、分享、提示词、图片放大及同类返回', () => {

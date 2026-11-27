@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/index",
+    "pages/cases/index",
     "pages/library/index",
     "pages/saved/index",
     "pages/detail/index",
@@ -24,6 +25,12 @@
         "text": "首页",
         "iconPath": "assets/home.png",
         "selectedIconPath": "assets/home-active.png"
+      },
+      {
+        "pagePath": "pages/cases/index",
+        "text": "案例",
+        "iconPath": "assets/cases.png",
+        "selectedIconPath": "assets/cases-active.png"
       },
       {
         "pagePath": "pages/library/index",

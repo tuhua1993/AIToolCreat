@@ -1,48 +1,55 @@
+<view class="masthead" style="padding-top: {{statusBar}}px;">
+  <view class="masthead-row" style="height: {{menuHeight}}px;">
+    <view class="brand-mark" aria-hidden="true"><view></view><view></view><view></view></view>
+    <text class="brand-title">创作玩家</text>
+  </view>
+</view>
+
 <view class="shell home">
-  <view class="hero">
-    <image class="hero-image" src="/assets/studio-cover.jpg" mode="aspectFill" />
-    <view class="hero-shade"></view>
-    <view class="hero-content">
-      <view class="hero-label">个人 AI 创作教程</view>
-      <view class="hero-heading">把想法<text class="hero-accent">做成作品。</text></view>
-      <button class="primary-button hero-action" bindtap="browse" hover-class="tap">
-        浏览教程 <text class="hero-arrow">↗</text>
-      </button>
+  <view class="creator-stage">
+    <image class="stage-image" src="/assets/creator-stage.jpg" mode="aspectFill" />
+    <view class="stage-shade"></view>
+    <view class="stage-content">
+      <view class="stage-title">今天想用 AI<text>做点什么？</text></view>
+      <view class="stage-note">工具清单 · 制作预算 · 实操流程</view>
     </view>
-    <text class="hero-credit">AI 生成插画</text>
+    <text class="stage-credit">AI 生成插画</text>
   </view>
 
-  <button class="search-box home-search" bindtap="search" hover-class="tap">
-    <view class="search-icon"></view>
-    <text>搜索工具或教程</text>
-    <text class="search-arrow">›</text>
-  </button>
-
-  <navigator class="starter" url="{{startPath}}" hover-class="tap">
-    <view class="starter-icon"><image src="/assets/build.png" mode="aspectFit" /></view>
-    <view class="starter-copy">
-      <view class="starter-label">入门推荐</view>
-      <view class="starter-title">{{recommendation}}</view>
-    </view>
-    <text class="starter-arrow">↗</text>
-  </navigator>
-
-  <view class="section-title topic-heading">按主题找</view>
   <view class="topic-grid">
     <button
-      wx:for="{{categories}}" wx:key="id"
-      class="topic-card" data-category="{{item.id}}" bindtap="openTopic" hover-class="tap"
+      wx:for="{{creationTopics}}" wx:key="id"
+      class="topic-card topic-{{item.tone}}" data-category="{{item.id}}" bindtap="openTopic" hover-class="tap"
     >
-      <view class="topic-icon tone-{{item.tone}}">
-        <image src="/assets/{{item.icon}}.png" mode="aspectFit" />
-      </view>
-      <view class="topic-name">{{item.name}}</view>
+      <image class="topic-icon" src="/assets/{{item.icon}}.png" mode="aspectFit" />
+      <text>{{item.action}}</text>
     </button>
   </view>
 
-  <view class="section-title updates-heading">最近更新</view>
-  <view class="updates">
-    <guide-card wx:for="{{recent}}" wx:key="id" guide="{{item}}" show-date="{{true}}"></guide-card>
+  <view class="home-section">
+    <view class="section-bar">
+      <view class="section-title">最新实战</view>
+      <button class="section-link" bindtap="openCases" hover-class="tap">全部案例 <text>›</text></button>
+    </view>
+    <guide-card wx:for="{{recent}}" wx:key="id" guide="{{item}}" illustrated="{{true}}"></guide-card>
+    <view class="cover-credit">漫剧画面与歌曲封面由 AI 生成</view>
+  </view>
+
+  <view class="home-section">
+    <view class="section-bar">
+      <view class="section-title">工具教程</view>
+      <button class="section-link" bindtap="search" hover-class="tap"><view class="search-icon"></view>搜索</button>
+    </view>
+    <button class="tool-link" data-category="tools" bindtap="openTopic" hover-class="tap">
+      <image src="/assets/spark.png" mode="aspectFit" />
+      <text>WorkBuddy、豆包和 Grok</text>
+      <text class="tool-arrow">›</text>
+    </button>
+    <button class="tool-link" data-category="code" bindtap="openTopic" hover-class="tap">
+      <image src="/assets/code.png" mode="aspectFit" />
+      <text>Codex 编程实战</text>
+      <text class="tool-arrow">›</text>
+    </button>
   </view>
 
   <navigator class="about-link" url="/pages/about/index" hover-class="tap">关于创作玩家 <text>›</text></navigator>

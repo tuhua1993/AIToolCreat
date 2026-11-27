@@ -7,12 +7,13 @@ Page({
     guide: null,
     bookmarked: false,
     hiddenFigures: {},
-    enlargedFigure: ''
+    enlargedFigure: '',
+    showSkill: false
   },
 
   onLoad(options) {
     const guide = getGuide(guideIdFromOptions(options))
-    this.setData({ guide, hiddenFigures: {}, enlargedFigure: '' })
+    this.setData({ guide, hiddenFigures: {}, enlargedFigure: '', showSkill: false })
   },
 
   onShow() {
@@ -44,6 +45,26 @@ Page({
       data: guide.prompt,
       fail() {
         wx.showToast({ title: '复制失败，可长按文字选取', icon: 'none' })
+      }
+    })
+  },
+
+  toggleSkill() {
+    this.setData({ showSkill: !this.data.showSkill })
+  },
+
+  jumpToCaseSection(event) {
+    wx.pageScrollTo({ selector: `#${event.currentTarget.dataset.section}`, duration: 250, offsetTop: -12 })
+  },
+
+  copySkill() {
+    const skill = this.data.guide?.resources?.skill
+    if (!skill) return
+    wx.setClipboardData({
+      data: skill.markdown,
+      fail: () => {
+        this.setData({ showSkill: true })
+        wx.showToast({ title: '可长按 Skill 文本复制', icon: 'none' })
       }
     })
   },

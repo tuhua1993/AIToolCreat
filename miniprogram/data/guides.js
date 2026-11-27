@@ -1,19 +1,21 @@
 const guides = require('./tutorials')
+const caseResources = require('./case-resources')
 
 const categories = [
   { id: 'tools', name: 'AI 工具', icon: 'spark', tone: 'blue' },
   { id: 'code', name: 'AI 编程', icon: 'code', tone: 'lilac' },
-  { id: 'drama', name: 'AI 短剧', icon: 'drama', tone: 'peach' },
-  { id: 'video', name: 'AI 短视频', icon: 'play', tone: 'teal' },
-  { id: 'overseas', name: '短剧出海', icon: 'globe', tone: 'teal' },
-  { id: 'music', name: 'AI 音乐', icon: 'music', tone: 'peach' },
-  { id: 'fiction', name: 'AI 小说', icon: 'book', tone: 'lilac' },
-  { id: 'build', name: '网站·软件·App', icon: 'build', tone: 'blue' }
+  { id: 'drama', name: 'AI 短剧', action: '做短剧', icon: 'drama', tone: 'peach' },
+  { id: 'video', name: 'AI 短视频', action: '做短视频', icon: 'play', tone: 'teal' },
+  { id: 'overseas', name: '短剧出海', action: '做出海字幕', icon: 'globe', tone: 'teal' },
+  { id: 'music', name: 'AI 音乐', action: '做音乐', icon: 'music', tone: 'peach' },
+  { id: 'fiction', name: 'AI 小说', action: '写小说', icon: 'book', tone: 'lilac' },
+  { id: 'build', name: '网站·软件·App', action: '搭网站 / App', icon: 'build', tone: 'blue' }
 ]
 
 const categoryMap = new Map(categories.map((item) => [item.id, item]))
 const catalog = guides.slice().sort((a, b) => b.updatedOn.localeCompare(a.updatedOn)).map((guide) => ({
   ...guide,
+  resources: caseResources[guide.id] || null,
   topic: categoryMap.get(guide.category),
   steps: guide.steps.map(([title, body, figure]) => ({ title, body, figure: figure || null }))
 }))
@@ -33,8 +35,8 @@ function getGuide(id) {
 }
 
 function getCard(guide) {
-  const { id, title, summary, time, topic, updatedOn } = guide
-  return { id, title, summary, time, topic, updatedOn }
+  const { id, title, summary, time, topic, updatedOn, cover, caseNote } = guide
+  return { id, title, summary, time, topic, updatedOn, cover: cover || null, caseNote: caseNote || '' }
 }
 
 function findGuides(category, query = '') {
@@ -45,4 +47,8 @@ function findGuides(category, query = '') {
   }).map(({ guide }) => getCard(guide))
 }
 
-module.exports = { categories, getGuide, getCard, findGuides }
+function findCases() {
+  return catalog.filter((guide) => guide.resources).map(getCard)
+}
+
+module.exports = { categories, getGuide, getCard, findGuides, findCases }

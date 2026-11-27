@@ -9,7 +9,9 @@ Component({
         this.setData({ url: guide ? detailPath(guide.id) : '' })
       }
     },
-    showDate: { type: Boolean, value: false }
+    showDate: { type: Boolean, value: false },
+    illustrated: { type: Boolean, value: false },
+    featured: { type: Boolean, value: false }
   },
   data: { url: '' }
 })
